@@ -14,6 +14,7 @@ use App\Http\Controllers\IndexController;
 |
 */
 
+// ログイン前
 Route::get('/', function(){
     return view('auth.login');
 });
@@ -21,7 +22,7 @@ Route::get('/', function(){
 // ログイン後
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
-    Route::get('/home',function(){
+    Route::get('/',function(){
         return view('home');
     })->name('home');
 });
