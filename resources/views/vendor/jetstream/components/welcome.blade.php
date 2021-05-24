@@ -1,4 +1,4 @@
-<div class="p-6 text-center sm:px-20 bg-white border-b border-gray-200">
+<div class="p-8 text-center sm:px-20 bg-white border-b border-gray-200">
     <!-- <div>
         <x-jet-application-logo class="block h-12 w-auto" />
     </div> -->
@@ -15,16 +15,20 @@
     </div> -->
 </div>
 
-<div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
-    <div class="p-6">
-    </div>
+<div class="text-center bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
+    <a href="{{route('index')}}" class="p-8 text-xl hover:bg-gray-200 transition ease-out duration-500">
+    在庫リスト閲覧
+    </a>
 
-    <div class="p-6 border-t border-gray-200 md:border-t-0 md:border-l">
-    </div>
+    <a href="{{route('log')}}" class="p-8 border-t border-gray-200 md:border-t-0 md:border-l text-xl hover:bg-gray-200 transition ease-out duration-500">
+    履歴
+    </a>
 
-    <div class="p-6 border-t border-gray-200">
-    </div>
+    <a href="{{route('csv')}}" class="p-8 border-t border-gray-200 text-xl hover:bg-gray-200 transition ease-out duration-500">
+    CSVダウンロード
+    </a>
 
-    <div class="p-6 border-t border-gray-200 md:border-l">
-    </div>
+    <a href="{{route('settings')}}" class="p-8 border-t border-gray-200 md:border-l text-xl hover:bg-gray-200 transition ease-out duration-500">
+    設定
+    </a>
 </div>

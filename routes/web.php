@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +24,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/',function(){
         return view('home');
     })->name('home');
+
+    Route::get('index', 'IndexController@index')->name('index');
+
+    Route::get('log', 'IndexController@log')->name('log');
+
+    Route::get('csv', 'IndexController@csv')->name('csv');
+
+    Route::get('settings', 'IndexController@settings')->name('settings');
 });
