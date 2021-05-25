@@ -1,8 +1,8 @@
 <x-app-layout>
-    @section('title', '在庫リスト')
+    @section('title', '在庫リスト閲覧・編集')
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Log
+            Stock List
         </h2>
     </x-slot>
 
@@ -10,6 +10,27 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <h1 class="p-3">hello,this is the index page.</h1>
+
+                <table>
+                    <tr>
+                        <th>メーカーID</th>
+                        <th>名前</th>
+                        <th>価格</th>
+                        <th>数量</th>
+                        <th>在庫合計額</th>
+                        <th>最終編集者ID</th>
+                    </tr>
+                    @foreach($items as $item)
+                    <tr>
+                        <th>{{$item->maker_id}}</th>
+                        <th>{{$item->name}}</th>
+                        <th>￥{{number_format($item->price)}}</th>
+                        <th>{{$item->quantity}}</th>
+                        <th>￥{{number_format($item->price * $item->quantity)}}</th>
+                        <th>{{$item->last_editor}}</th>
+                    </tr>
+                    @endforeach
+                </table>
             </div>
 
             <div class="mt-10 text-center">

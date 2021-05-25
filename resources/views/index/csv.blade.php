@@ -2,7 +2,7 @@
     @section('title', 'CSVダウンロード')
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Log
+            CSV Download
         </h2>
     </x-slot>
 

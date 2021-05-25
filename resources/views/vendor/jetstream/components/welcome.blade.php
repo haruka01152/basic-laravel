@@ -17,7 +17,7 @@
 
 <div class="text-center bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
     <a href="{{route('index')}}" class="p-8 text-xl hover:bg-gray-200 transition ease-out duration-500">
-    在庫リスト閲覧
+    在庫リスト閲覧・編集
     </a>
 
     <a href="{{route('log')}}" class="p-8 border-t border-gray-200 md:border-t-0 md:border-l text-xl hover:bg-gray-200 transition ease-out duration-500">
