@@ -13,21 +13,21 @@
 
                 <table>
                     <tr>
-                        <th>メーカーID</th>
+                        <th>メーカー</th>
                         <th>名前</th>
                         <th>価格</th>
                         <th>数量</th>
                         <th>在庫合計額</th>
-                        <th>最終編集者ID</th>
+                        <th>最終編集者</th>
                     </tr>
                     @foreach($items as $item)
                     <tr>
-                        <th>{{$item->maker_id}}</th>
+                        <th>@if(!empty($item->makers->name)){{$item->makers->name}}@endif</th>
                         <th>{{$item->name}}</th>
                         <th>￥{{number_format($item->price)}}</th>
                         <th>{{$item->quantity}}</th>
                         <th>￥{{number_format($item->price * $item->quantity)}}</th>
-                        <th>{{$item->last_editor}}</th>
+                        <th>@if(!empty($item->users->name)){{$item->users->name}}@endif</th>
                     </tr>
                     @endforeach
                 </table>

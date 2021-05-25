@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Maker extends Model
 {
     use HasFactory;
+
+    public function products()
+    {
+        return $this->hasMany('App\Models\Product', 'maker_id','id');
+    }
 }
