@@ -1,3 +1,22 @@
+<!-- テーブルのCSS -->
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid rgba(107, 114, 128, 1);
+        text-align: center;
+    }
+
+    th,
+    td {
+        padding: 1rem 2rem;
+    }
+
+    th {
+        background-color: rgba(243, 244, 246, 1);
+    }
+</style>
+
 <x-app-layout>
     @section('title', '在庫リスト閲覧・編集')
     <x-slot name="header">
@@ -9,10 +28,8 @@
     <div class="py-12 px-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <h1 class="p-3">hello,this is the index page.</h1>
-
-                <table>
-                    <tr>
+                <table class="m-auto my-10">
+                    <tr class="p-5">
                         <th>メーカー</th>
                         <th>名前</th>
                         <th>価格</th>
@@ -22,12 +39,12 @@
                     </tr>
                     @foreach($items as $item)
                     <tr>
-                        <th>@if(!empty($item->makers->name)){{$item->makers->name}}@endif</th>
-                        <th>{{$item->name}}</th>
-                        <th>￥{{number_format($item->price)}}</th>
-                        <th>{{$item->quantity}}</th>
-                        <th>￥{{number_format($item->price * $item->quantity)}}</th>
-                        <th>@if(!empty($item->users->name)){{$item->users->name}}@endif</th>
+                        <td>{{$item->makers->name}}</td>
+                        <td>{{$item->name}}</td>
+                        <td>￥{{number_format($item->price)}}</td>
+                        <td>{{$item->quantity}}</td>
+                        <td>￥{{number_format($item->price * $item->quantity)}}</td>
+                        <td>{{$item->users->name}}</td>
                     </tr>
                     @endforeach
                 </table>
