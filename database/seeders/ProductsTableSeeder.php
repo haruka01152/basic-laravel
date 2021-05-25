@@ -15,7 +15,7 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
         DB::table('products')->insert([
-            'maker_id' => 1,
+            ['maker_id' => 1,
             'name' => 'ZX電話機',
             'price' => 20000,
             'quantity' => 10,
@@ -49,6 +49,6 @@ class ProductsTableSeeder extends Seeder
             'quantity' => 3,
             'last_editor' => 2,
         ],
-    );
+        ]);
     }
 }

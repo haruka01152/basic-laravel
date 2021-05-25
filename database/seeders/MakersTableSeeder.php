@@ -16,13 +16,14 @@ class MakersTableSeeder extends Seeder
     {
         //
         DB::table('makers')->insert([
-            'name' => 'NTT',
+            ['name' => 'NTT',
         ],
         [
             'name' => 'サクサ',
         ],
         [
             'name' => 'セキュリティハウス',
-        ],);
+        ],
+        ]);
     }
 }

@@ -15,7 +15,7 @@ class AddUserAuthorityToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->integer('authority');
+            $table->integer('authority')->default(0);
         });
     }
 
