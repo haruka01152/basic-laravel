@@ -21,9 +21,7 @@ Route::get('/', function(){
 // ログイン後
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
-    Route::get('/',function(){
-        return view('home');
-    })->name('home');
+    Route::get('/', 'IndexController@home')->name('home');
 
     Route::get('index', 'IndexController@index')->name('index');
 
