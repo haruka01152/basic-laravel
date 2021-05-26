@@ -18,7 +18,7 @@
         background-color: rgba(243, 244, 246, 1);
     }
     th,.td-link{
-        padding: .7rem 2rem;
+        padding: .7rem 1.5rem;
     }
     .td-link{
         display: inline-block;
@@ -56,7 +56,7 @@
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">{{$item->quantity}}</a></td>
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">￥{{number_format($item->price * $item->quantity)}}</a></td>
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">{{$item->users->name}}</a></td>
-                        <td><a href="td-link" href="{{route('index.edit', ['id' => $item->id])}}">{{$item->updated_at}}</a></td>
+                        <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">{{$item->updated_at}}</a></td>
                     </tr>
                     @endforeach
                 </table>
