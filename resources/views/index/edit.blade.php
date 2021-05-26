@@ -20,6 +20,7 @@
 
                 <form action="" method="post" class="text-center">
                     <table class="flex justify-center my-12 pt-4 pb-8 border-solid border-gray-500 border">
+                        @csrf
                         <tr>
                             <th>仕入先</th>
                             <th>商品名</th>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Log;
 use App\Models\Maker;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
@@ -18,9 +19,16 @@ class IndexController extends Controller
 
     public function edit(Request $request)
     {
-        $item = Product::find($request->id);
+        $item = Product::findOrFail($request->id);
         $makers = Maker::all();
         return view('index.edit', compact('item', 'makers'));
+    }
+
+    public function update(Request $request)
+    {
+        Product::where('id', $request->id)->update(['maker_id' => $request->maker, 'name' => $request->name, 'price' => $request->price, 'quantity' => $request->quantity, 'last_editor' => Auth::id()]);
+
+        return view('index.update');
     }
 
 }

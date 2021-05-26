@@ -9,6 +9,14 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'maker_id',
+        'name',
+        'price',
+        'quantity',
+        'last_editor',
+    ];
+
     public function users()
     {
         return $this->belongsTo('App\Models\User', 'last_editor', 'id');

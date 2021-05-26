@@ -46,6 +46,7 @@
                         <th>数量</th>
                         <th>在庫合計額</th>
                         <th>最終編集者</th>
+                        <th>最終更新日時</th>
                     </tr>
                     @foreach($items as $item)
                     <tr>
@@ -55,6 +56,7 @@
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">{{$item->quantity}}</a></td>
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">￥{{number_format($item->price * $item->quantity)}}</a></td>
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">{{$item->users->name}}</a></td>
+                        <td><a href="td-link" href="{{route('index.edit', ['id' => $item->id])}}">{{$item->updated_at}}</a></td>
                     </tr>
                     @endforeach
                 </table>
