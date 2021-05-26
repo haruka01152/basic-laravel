@@ -30,7 +30,11 @@
                             <td>
                                 <select name="maker">
                                     @foreach($makers as $maker)
+                                    @if($maker->name === $item->makers->name)
+                                    <option value="{{$maker->id}}" selected>{{$maker->name}}</option>
+                                    @else
                                     <option value="{{$maker->id}}">{{$maker->name}}</option>
+                                    @endif
                                     @endforeach
                                 </select>
                             </td>
