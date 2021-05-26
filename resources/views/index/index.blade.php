@@ -6,12 +6,19 @@
         border: 1px solid rgba(107, 114, 128, 1);
         text-align: center;
     }
-
+    th{
+        cursor:default;
+    }
+    tr{
+        cursor:pointer;
+    }
+    tr:hover{
+        background-color: rgba(243, 244, 246, 1);
+    }
     th,
     td {
-        padding: 1rem 2rem;
+        padding: .7rem 2rem;
     }
-
     th {
         background-color: rgba(243, 244, 246, 1);
     }
@@ -38,7 +45,7 @@
                         <th>最終編集者</th>
                     </tr>
                     @foreach($items as $item)
-                    <tr>
+                    <tr class="clickable-row" data-href="https://yahoo.co.jp">
                         <td>{{$item->makers->name}}</td>
                         <td>{{$item->name}}</td>
                         <td>￥{{number_format($item->price)}}</td>
@@ -55,4 +62,5 @@
             </div>
         </div>
     </div>
+    <script src="{{mix('js/jquery.js')}}"></script>
 </x-app-layout>

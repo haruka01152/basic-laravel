@@ -21,9 +21,12 @@ Route::get('/', function(){
 // ログイン後
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
-    Route::get('/', 'IndexController@home')->name('home');
+    Route::get('/', 'Controller@home')->name('home');
 
-    Route::get('index', 'IndexController@index')->name('index');
+    Route::prefix('index')->group(function(){
+        Route::get('/', 'IndexController@index')->name('index');
+        Route::get('edit', 'IndexController@edit')->name('edit');
+    });
 
     Route::get('log', 'IndexController@log')->name('log');
 
@@ -31,3 +34,4 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     Route::get('settings', 'IndexController@settings')->name('settings');
 });
+

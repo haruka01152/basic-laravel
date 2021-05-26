@@ -9,15 +9,17 @@ use App\Models\Product;
 
 class IndexController extends Controller
 {
-    public function home()
-    {
-        return view('index.home');
-    }
-
+    
     public function index()
     {
         $items = Product::all();
         return view('index.index', compact('items'));
+    }
+
+    public function edit(Request $id)
+    {
+        $item = Product::find($id);
+        return view('index.edit', compact('item'));
     }
 
     public function log()
