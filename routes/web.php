@@ -25,7 +25,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     Route::prefix('index')->group(function(){
         Route::get('/', 'IndexController@index')->name('index');
+
         Route::get('edit', 'IndexController@edit')->name('index.edit');
+        Route::post('edit', 'IndexController@update');
     });
 
     Route::get('log', 'IndexController@log')->name('log');
