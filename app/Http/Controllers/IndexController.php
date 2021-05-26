@@ -16,25 +16,11 @@ class IndexController extends Controller
         return view('index.index', compact('items'));
     }
 
-    public function edit(Request $id)
+    public function edit(Request $request)
     {
-        $item = Product::find($id);
-        return view('index.edit', compact('item'));
+        $item = Product::find($request->id);
+        $makers = Maker::all();
+        return view('index.edit', compact('item', 'makers'));
     }
 
-    public function log()
-    {
-        $items = Log::all();
-        return view('index.log', compact('items'));
-    }
-
-    public function csv()
-    {
-        return view('index.csv');
-    }
-
-    public function settings()
-    {
-        return view('index.settings');
-    }
 }
