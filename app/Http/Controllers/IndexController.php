@@ -14,7 +14,7 @@ class IndexController extends Controller
     
     public function index()
     {
-        $items = Product::where('quantity', '>=',  1)->get();
+        $items = Product::all();
         return view('index.index', compact('items'));
     }
 
@@ -27,7 +27,7 @@ class IndexController extends Controller
 
     public function update(ProductRequest $request)
     {
-        Product::where('id', $request->id)->update(['maker_id' => $request->maker, 'name' => $request->name, 'price' => $request->price, 'quantity' => $request->quantity, 'last_editor' => Auth::id()]);
+        Product::where('id', $request->id)->update(['maker_id' => $request->maker, 'name' => $request->product_name, 'price' => $request->price, 'quantity' => $request->quantity, 'last_editor' => Auth::id()]);
 
         return view('index.update');
     }

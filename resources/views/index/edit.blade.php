@@ -43,7 +43,7 @@
                                     @endforeach
                                 </select>
                             </td>
-                            <td><input type="text" name="name" value="{{$item->name}}"></td>
+                            <td><input type="text" name="product_name" value="{{$item->name}}"></td>
                             <td><input type="number" name="price" value="{{$item->price}}" style="width:150px"></td>
                             <td><input type="number" name="quantity" value="{{$item->quantity}}" style="width:100px;"></td>
                         </tr>
@@ -52,7 +52,7 @@
                     <input type="submit" value="更新" class="cursor-pointer text-lg text-white bg-red-400 inline-block w-24 h-10 rounded-lg">
                 </form>
 
-                @error('name')
+                @error('product_name')
                 <p class="error">{{$message}}</p>
                 @enderror
 
