@@ -1,8 +1,18 @@
 <!-- CSS -->
 <style>
-    th,
-    td {
+    td{
+        padding:.5rem 1rem;
+    }
+    .logs,
+    .logs th,
+    .logs td {
         padding: .5rem 1rem;
+        border: 1px solid rgba(107, 114, 128, 1);
+        text-align: center;
+        padding: 0;
+    }
+    .logs th{
+        padding: .7rem 1.5rem;
     }
     .error{
         color:red;
@@ -64,6 +74,23 @@
                 <p class="error">{{$message}}</p>
                 @enderror
 
+            </div>
+
+            <div class="bg-white p-10 overflow-hidden shadow-xl sm:rounded-lg mt-10">
+                <h3 class="text-lg">変更履歴</h3>
+
+                <table class="logs m-auto my-10">
+                    <tr>
+                        <th>更新者</th>
+                        <th>更新日時</th>
+                    </tr>
+                    @foreach($logs as $log)
+                    <tr>
+                        <th>{{$log->products->users->name}}</th>
+                        <th>{{$log->updated_at}}</th>
+                    </tr>
+                    @endforeach
+                </table>
             </div>
 
             <div class="mt-10 text-center">

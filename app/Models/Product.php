@@ -26,4 +26,9 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\Maker', 'maker_id', 'id');
     }
+
+    public function logs()
+    {
+        return $this->hasMany('App\Models\Logs', 'id', 'product_id');
+    }
 }

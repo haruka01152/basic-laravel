@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Log extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'product_id',
+        'editor',
+        'contents',
+    ];
+
+    public function products()
+    {
+        return $this->belongsTo('App\Models\Product', 'product_id', 'id');
+    }
 }
