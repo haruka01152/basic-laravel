@@ -61,7 +61,7 @@
             </div>
 
             <div class="mt-10 text-center">
-                <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{route('home')}}">ホームへ戻る</a>
+                <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{route('home')}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　ホームへ戻る</a>
             </div>
         </div>
     </div>
