@@ -37,9 +37,9 @@
 
     <div class="py-12 px-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <table class="m-auto my-10 mx-5">
-                    <tr class="p-5">
+            <div class="bg-white py-10 px-5 overflow-hidden shadow-xl sm:rounded-lg">
+                <table class="m-auto block overflow-x-scroll whitespace-nowrap lg:overflow-auto lg:table">
+                    <tr>
                         <th>仕入先</th>
                         <th>商品名</th>
                         <th>価格</th>
