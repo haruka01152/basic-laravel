@@ -1,7 +1,11 @@
-<!-- テーブルのCSS -->
+<!-- CSS -->
 <style>
-    th,td{
+    th,
+    td {
         padding: .5rem 1rem;
+    }
+    .error{
+        color:red;
     }
 </style>
 
@@ -47,6 +51,18 @@
 
                     <input type="submit" value="更新" class="cursor-pointer text-lg text-white bg-red-400 inline-block w-24 h-10 rounded-lg">
                 </form>
+
+                @error('name')
+                <p class="error">{{$message}}</p>
+                @enderror
+
+                @error('price')
+                <p class="error">{{$message}}</p>
+                @enderror
+
+                @error('quantity')
+                <p class="error">{{$message}}</p>
+                @enderror
 
             </div>
 
