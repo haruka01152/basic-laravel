@@ -5,9 +5,11 @@
     td {
         border: 1px solid rgba(107, 114, 128, 1);
         text-align: center;
+        padding: 0;
     }
     th{
         cursor:default;
+        background-color: rgba(209, 213, 219, .7);
     }
     tr{
         cursor:pointer;
@@ -15,12 +17,13 @@
     tr:hover{
         background-color: rgba(243, 244, 246, 1);
     }
-    th,
-    td {
+    th,.td-link{
         padding: .7rem 2rem;
     }
-    th {
-        background-color: rgba(243, 244, 246, 1);
+    .td-link{
+        display: inline-block;
+        width:100%;
+        height:100%;
     }
 </style>
 
@@ -35,23 +38,23 @@
     <div class="py-12 px-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <table class="m-auto my-10">
+                <table class="m-auto my-10 mx-5">
                     <tr class="p-5">
-                        <th>メーカー</th>
-                        <th>名前</th>
+                        <th>仕入先</th>
+                        <th>商品名</th>
                         <th>価格</th>
                         <th>数量</th>
                         <th>在庫合計額</th>
                         <th>最終編集者</th>
                     </tr>
                     @foreach($items as $item)
-                    <tr class="clickable-row" data-href="https://yahoo.co.jp">
-                        <td>{{$item->makers->name}}</td>
-                        <td>{{$item->name}}</td>
-                        <td>￥{{number_format($item->price)}}</td>
-                        <td>{{$item->quantity}}</td>
-                        <td>￥{{number_format($item->price * $item->quantity)}}</td>
-                        <td>{{$item->users->name}}</td>
+                    <tr>
+                        <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">{{$item->makers->name}}</a></td>
+                        <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">{{$item->name}}</a></td>
+                        <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">￥{{number_format($item->price)}}</a></td>
+                        <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">{{$item->quantity}}</a></td>
+                        <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">￥{{number_format($item->price * $item->quantity)}}</a></td>
+                        <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">{{$item->users->name}}</a></td>
                     </tr>
                     @endforeach
                 </table>
@@ -62,5 +65,4 @@
             </div>
         </div>
     </div>
-    <script src="{{mix('js/jquery.js')}}"></script>
 </x-app-layout>
