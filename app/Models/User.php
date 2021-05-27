@@ -64,4 +64,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Product');
     }
+
+    public function logs()
+    {
+        return $this->hasMany('App\Models\Logs');
+    }
 }

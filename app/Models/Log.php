@@ -19,4 +19,9 @@ class Log extends Model
     {
         return $this->belongsTo('App\Models\Product', 'product_id', 'id');
     }
+
+    public function users()
+    {
+        return $this->belongsTo('App\Models\User', 'editor', 'id');
+    }
 }

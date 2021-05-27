@@ -103,17 +103,17 @@
             <div class="bg-white p-10 overflow-hidden shadow-xl sm:rounded-lg mt-10">
                 <h3 class="text-lg">変更履歴 （直近10件）</h3>
 
-                <table class="logs m-auto my-10">
+                <table class="logs m-auto my-10 block overflow-x-scroll whitespace-nowrap lg:overflow-auto lg:table">
                     <tr>
                         <th>更新者</th>
-                        <th>更新日時</th>
                         <th>変更後の内容</th>
+                        <th>更新日時</th>
                     </tr>
                     @foreach($logs as $log)
                     <tr>
-                        <td>{{$log->products->users->name}}</td>
-                        <td>{{$log->updated_at}}</td>
+                        <td>{{$log->users->name}}</td>
                         <td>{{$log->contents}}</td>
+                        <td>{{$log->updated_at}}</td>
                     </tr>
                     @endforeach
                 </table>

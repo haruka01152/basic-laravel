@@ -7,7 +7,7 @@ use App\Models\Log;
 use App\Models\Maker;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\ProductRequest;
+use App\Http\Requests\IndexRequest;
 
 class IndexController extends Controller
 {
@@ -26,8 +26,10 @@ class IndexController extends Controller
         return view('index.edit', compact('item', 'makers', 'logs'));
     }
 
-    public function update(ProductRequest $request)
+    public function update(IndexRequest $request)
     {
+        $id = $request->id;
+
         // 商品リストに登録
         Product::where('id', $request->id)->update(['maker_id' => $request->maker, 'name' => $request->product_name, 'price' => $request->price, 'quantity' => $request->quantity, 'last_editor' => Auth::id()]);
 
@@ -35,7 +37,7 @@ class IndexController extends Controller
         $contents = '仕入先 => ' . $request->maker_name . ',　商品名 => ' . $request->product_name . ',　価格 => ￥' . number_format($request->price) . ',　数量 => ' . $request->quantity;
         Log::create(['product_id' => $request->id, 'editor' => Auth::id(), 'contents' => $contents]);
 
-        return view('index.update');
+        return view('index.update', compact('id'));
     }
 
 }
