@@ -8,6 +8,10 @@
         padding: 0;
     }
 
+    tbody{
+        width:100%;
+        display: table;
+    }
     th {
         cursor: default;
         background-color: rgba(209, 213, 219, .7);
@@ -58,7 +62,7 @@
                     
                 </div>
 
-                <table class="m-auto block overflow-x-scroll whitespace-nowrap lg:overflow-auto lg:table">
+                <table class="m-auto block overflow-x-scroll whitespace-nowrap w-full">
                     <tr>
                         <th>仕入先</th>
                         <th>商品名</th>
