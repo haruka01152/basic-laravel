@@ -17,6 +17,10 @@ class CreateLogsTable extends Migration
             $table->id();
             $table->integer('product_id');
             $table->integer('editor');
+            $table->integer('maker');
+            $table->string('product_name');
+            $table->integer('price');
+            $table->integer('quantity');
             $table->timestamp('updated_at')->useCurrent()->nullable();
             $table->timestamp('created_at')->useCurrent()->nullable();
         });

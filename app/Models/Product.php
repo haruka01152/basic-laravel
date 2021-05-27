@@ -29,6 +29,6 @@ class Product extends Model
 
     public function logs()
     {
-        return $this->hasMany('App\Models\Logs', 'id', 'product_id');
+        return $this->hasMany('App\Models\Log', 'id', 'product_id');
     }
 }

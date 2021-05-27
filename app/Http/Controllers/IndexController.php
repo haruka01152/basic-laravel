@@ -53,6 +53,14 @@ class IndexController extends Controller
         Product::where('id', $request->id)->update(['maker_id' => $request->maker, 'name' => $request->product_name, 'price' => $request->price, 'quantity' => $request->quantity, 'last_editor' => Auth::id()]);
 
         // ログを作成
+        Log::create([
+            'product_id' => $request->id,
+            'editor' => Auth::id(),
+            'maker' =>  $request->maker,
+            'product_name' => $request->product_name,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+        ]);
 
         return view('index.update', compact('id'));
     }

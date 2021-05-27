@@ -12,7 +12,10 @@ class Log extends Model
     protected $fillable = [
         'product_id',
         'editor',
-        'contents',
+        'maker',
+        'product_name',
+        'price',
+        'quantity',
     ];
 
     public function products()
@@ -23,5 +26,10 @@ class Log extends Model
     public function users()
     {
         return $this->belongsTo('App\Models\User', 'editor', 'id');
+    }
+
+    public function makers()
+    {
+        return $this->belongsTo('App\Models\Maker', 'maker', 'id');
     }
 }

@@ -11,6 +11,11 @@ class Maker extends Model
 
     public function products()
     {
-        return $this->hasMany('App\Models\Product', 'maker_id','id');
+        return $this->hasMany('App\Models\Product');
+    }
+
+    public function logs()
+    {
+        return $this->hasMany('App\Models\Log');
     }
 }

@@ -99,7 +99,7 @@
 
             </div>
 
-            <!-- <div class="bg-white p-10 overflow-hidden shadow-xl sm:rounded-lg mt-10">
+            <div class="bg-white p-10 overflow-hidden shadow-xl sm:rounded-lg mt-10">
                 <h3 class="text-lg">変更履歴 （直近10件）</h3>
 
                 <table class="logs m-auto my-10 block overflow-x-scroll whitespace-nowrap lg:overflow-auto lg:table">
@@ -111,13 +111,13 @@
                     @foreach($logs as $log)
                     <tr>
                         <td>{{$log->users->name}}</td>
-                        <td>仕入先 => {{$log->maker}}, 商品名 => {{$log->product_name}}, 価格 => {{$log->price}}, 数量 => {{$log->quantity}}</td>
+                        <td>仕入先 => {{$log->makers->name}}, 商品名 => {{$log->product_name}}, 価格 => {{$log->price}}, 数量 => {{$log->quantity}}</td>
                         <td>{{$log->updated_at}}</td>
                     </tr>
                     @endforeach
                 </table>
             </div>
- -->
+
             <div class="mt-10 text-center">
                 <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{route('index')}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　一覧へ戻る</a>
             </div>
