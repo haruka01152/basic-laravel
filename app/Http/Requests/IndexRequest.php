@@ -31,8 +31,8 @@ class IndexRequest extends FormRequest
         return [
             //
             'product_name' => 'required|max:30',
-            'price' => 'numeric|min:1|nullable',
-            'quantity' => 'required|numeric|min:0',
+            'price' => 'numeric|min:1|max:1000000|nullable',
+            'quantity' => 'required|numeric|min:0|max:200',
         ];
     }
 }
