@@ -11,7 +11,7 @@ use App\Http\Requests\IndexRequest;
 
 class IndexController extends Controller
 {
-    
+
     public function index()
     {
         $items = Product::all();
@@ -30,9 +30,15 @@ class IndexController extends Controller
         Product::create(['maker_id' => $request->maker, 'name' => $request->product_name, 'price' => $request->price, 'quantity' => $request->quantity, 'last_editor' => Auth::id()]);
 
         // ログを作成
-
-
         $latest = Product::orderBy('id', 'desc')->first();
+        Log::create([
+            'product_id' => $latest->id,
+            'editor' => Auth::id(),
+            'maker' =>  $request->maker,
+            'product_name' => $request->product_name,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+        ]);
 
         return view('index.create', compact('latest'));
     }
@@ -50,19 +56,39 @@ class IndexController extends Controller
         $id = $request->id;
 
         // 商品リストを更新
-        Product::where('id', $request->id)->update(['maker_id' => $request->maker, 'name' => $request->product_name, 'price' => $request->price, 'quantity' => $request->quantity, 'last_editor' => Auth::id()]);
+        Product::where('id', $id)->update(['maker_id' => $request->maker, 'name' => $request->product_name, 'price' => $request->price, 'quantity' => $request->quantity, 'last_editor' => Auth::id()]);
 
         // ログを作成
-        Log::create([
-            'product_id' => $request->id,
-            'editor' => Auth::id(),
-            'maker' =>  $request->maker,
-            'product_name' => $request->product_name,
-            'price' => $request->price,
-            'quantity' => $request->quantity,
-        ]);
+        $old = Log::where('product_id', $id)->orderBy('id', 'desc')->first(); //更新される前のログの内容を取得
 
-        return view('index.update', compact('id'));
+        $new = Product::find($id); //更新後の商品情報を取得
+
+        if(isset($old)){
+            if ($old->maker != $new->maker_id || $old->product_name != $new->name || $old->price != $new->price || $old->quantity != $new->quantity) {
+                Log::create([
+                    'product_id' => $request->id,
+                    'editor' => Auth::id(),
+                    'maker' =>  $request->maker,
+                    'product_name' => $request->product_name,
+                    'price' => $request->price,
+                    'quantity' => $request->quantity,
+                ]);
+
+                return view('index.update', compact('id'));
+            }else{
+                return view('index.notupdate', compact('id'));
+            } 
+        }else{
+            Log::create([
+                'product_id' => $request->id,
+                'editor' => Auth::id(),
+                'maker' =>  $request->maker,
+                'product_name' => $request->product_name,
+                'price' => $request->price,
+                'quantity' => $request->quantity,
+            ]);
+
+            return view('index.update', compact('id'));
+        }
     }
-
 }
