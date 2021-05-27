@@ -7,23 +7,29 @@
         text-align: center;
         padding: 0;
     }
-    th{
-        cursor:default;
+
+    th {
+        cursor: default;
         background-color: rgba(209, 213, 219, .7);
     }
-    tr{
-        cursor:pointer;
+
+    tr {
+        cursor: pointer;
     }
-    tr:hover{
+
+    tr:hover {
         background-color: rgba(243, 244, 246, 1);
     }
-    th,.td-link{
+
+    th,
+    .td-link {
         padding: .7rem 1.5rem;
     }
-    .td-link{
+
+    .td-link {
         display: inline-block;
-        width:100%;
-        height:100%;
+        width: 100%;
+        height: 100%;
     }
 </style>
 
@@ -36,18 +42,22 @@
     </x-slot>
     <div class="bg-white shadow-md border-t border-solid border-gray">
         <div class="container max-w-7xl mx-auto py-3 px-4 lg:px-8">
-        <a class="pr-3 text-blue-400" href="{{route('home')}}">ホーム</a>
-        <i class="fas fa-chevron-right pr-3"></i>
-        <span>在庫リスト</span>
+            <a class="pr-3 text-blue-400" href="{{route('home')}}">ホーム</a>
+            <i class="fas fa-chevron-right pr-3"></i>
+            <span>在庫リスト</span>
         </div>
     </div>
 
     <div class="py-12 px-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white py-10 px-5 overflow-hidden shadow-xl sm:rounded-lg">
-                <div>
-                    <a href="{{route('index.add')}}">新規作成</a>
+
+                <div class="mb-10">
+                    <a href="{{route('index.add')}}" class="cursor-pointer text-lg text-white bg-red-400 inline-block py-2 px-4 rounded-lg shadow-md">新規作成</a>
+
+                    
                 </div>
+
                 <table class="m-auto block overflow-x-scroll whitespace-nowrap lg:overflow-auto lg:table">
                     <tr>
                         <th>仕入先</th>
