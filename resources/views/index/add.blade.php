@@ -37,7 +37,6 @@
                                 @endforeach
                             </select>
                         </div>
-                        <input type="hidden" name="maker_name" value="{{">
 
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
                             <label for="product_name">商品名</label>
