@@ -22,7 +22,7 @@ class IndexController extends Controller
     {
         $item = Product::findOrFail($request->id);
         $makers = Maker::all();
-        $logs = Log::where('product_id', $request->id)->orderBy('updated_at', 'desc')->get();
+        $logs = Log::where('product_id', $request->id)->orderBy('updated_at', 'desc')->take(10)->get();
         return view('index.edit', compact('item', 'makers', 'logs'));
     }
 
@@ -32,7 +32,8 @@ class IndexController extends Controller
         Product::where('id', $request->id)->update(['maker_id' => $request->maker, 'name' => $request->product_name, 'price' => $request->price, 'quantity' => $request->quantity, 'last_editor' => Auth::id()]);
 
         // ログに登録
-        Log::create(['product_id' => $request->id, 'editor' => Auth::id()]);
+        $contents = '仕入先 => ' . $request->maker_name . ',　商品名 => ' . $request->product_name . ',　価格 => ￥' . number_format($request->price) . ',　数量 => ' . $request->quantity;
+        Log::create(['product_id' => $request->id, 'editor' => Auth::id(), 'contents' => $contents]);
 
         return view('index.update');
     }

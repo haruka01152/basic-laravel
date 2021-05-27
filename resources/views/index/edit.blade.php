@@ -65,6 +65,7 @@
                                 @endforeach
                             </select>
                         </div>
+                        <input type="hidden" name="maker_name" value="{{$item->makers->name}}">
 
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
                             <label for="product_name">商品名</label>
@@ -100,17 +101,19 @@
             </div>
 
             <div class="bg-white p-10 overflow-hidden shadow-xl sm:rounded-lg mt-10">
-                <h3 class="text-lg">変更履歴</h3>
+                <h3 class="text-lg">変更履歴 （直近10件）</h3>
 
                 <table class="logs m-auto my-10">
                     <tr>
                         <th>更新者</th>
                         <th>更新日時</th>
+                        <th>変更後の内容</th>
                     </tr>
                     @foreach($logs as $log)
                     <tr>
                         <td>{{$log->products->users->name}}</td>
                         <td>{{$log->updated_at}}</td>
+                        <td>{{$log->contents}}</td>
                     </tr>
                     @endforeach
                 </table>
