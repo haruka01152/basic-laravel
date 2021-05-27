@@ -13,6 +13,10 @@
     }
     .logs th{
         padding: .7rem 1.5rem;
+        background-color: rgba(209, 213, 219, .7);
+    }
+    .logs td{
+        padding: .7rem 1.5rem;
     }
     .error{
         color:red;
@@ -86,8 +90,8 @@
                     </tr>
                     @foreach($logs as $log)
                     <tr>
-                        <th>{{$log->products->users->name}}</th>
-                        <th>{{$log->updated_at}}</th>
+                        <td>{{$log->products->users->name}}</td>
+                        <td>{{$log->updated_at}}</td>
                     </tr>
                     @endforeach
                 </table>
