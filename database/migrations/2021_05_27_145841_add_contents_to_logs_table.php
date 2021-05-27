@@ -15,7 +15,10 @@ class AddContentsToLogsTable extends Migration
     {
         Schema::table('logs', function (Blueprint $table) {
             //
-            $table->string('contents');
+            $table->integer('maker');
+            $table->string('product_name');
+            $table->integer('price');
+            $table->integer('quantity');
         });
     }
 
@@ -28,7 +31,10 @@ class AddContentsToLogsTable extends Migration
     {
         Schema::table('logs', function (Blueprint $table) {
             //
-            $table->dropColumn('contents');
+            $table->dropColumn('maker');
+            $table->dropColumn('product_name');
+            $table->dropColumn('price');
+            $table->dropColumn('quantity');
         });
     }
 }

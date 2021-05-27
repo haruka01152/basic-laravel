@@ -26,6 +26,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::prefix('index')->group(function(){
         Route::get('/', 'IndexController@index')->name('index');
 
+        Route::get('add', 'IndexController@add')->name('index.add');
+        Route::post('add', 'IndexController@create');
+
         Route::get('edit', 'IndexController@edit')->name('index.edit');
         Route::post('edit', 'IndexController@update');
     });

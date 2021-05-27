@@ -45,6 +45,9 @@
     <div class="py-12 px-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white py-10 px-5 overflow-hidden shadow-xl sm:rounded-lg">
+                <div>
+                    <a href="{{route('index.add')}}">新規作成</a>
+                </div>
                 <table class="m-auto block overflow-x-scroll whitespace-nowrap lg:overflow-auto lg:table">
                     <tr>
                         <th>仕入先</th>

@@ -18,6 +18,25 @@ class IndexController extends Controller
         return view('index.index', compact('items'));
     }
 
+    public function add()
+    {
+        $makers = Maker::all();
+        return view('index.add', compact('makers'));
+    }
+
+    public function create(IndexRequest $request)
+    {
+        // 商品リストに追加
+        Product::create(['maker_id' => $request->maker, 'name' => $request->product_name, 'price' => $request->price, 'quantity' => $request->quantity, 'last_editor' => Auth::id()]);
+
+        // ログを作成
+
+
+        $latest = Product::orderBy('id', 'desc')->first();
+
+        return view('index.create', compact('latest'));
+    }
+
     public function edit(Request $request)
     {
         $item = Product::findOrFail($request->id);
@@ -30,12 +49,10 @@ class IndexController extends Controller
     {
         $id = $request->id;
 
-        // 商品リストに登録
+        // 商品リストを更新
         Product::where('id', $request->id)->update(['maker_id' => $request->maker, 'name' => $request->product_name, 'price' => $request->price, 'quantity' => $request->quantity, 'last_editor' => Auth::id()]);
 
-        // ログに登録
-        $contents = '仕入先 => ' . $request->maker_name . ',　商品名 => ' . $request->product_name . ',　価格 => ￥' . number_format($request->price) . ',　数量 => ' . $request->quantity;
-        Log::create(['product_id' => $request->id, 'editor' => Auth::id(), 'contents' => $contents]);
+        // ログを作成
 
         return view('index.update', compact('id'));
     }

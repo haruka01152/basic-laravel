@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->integer('maker_id');
             $table->string('name');
-            $table->integer('price');
+            $table->integer('price')->default(0)->nullable();
             $table->integer('quantity');
             $table->integer('last_editor');
             $table->timestamp('updated_at')->useCurrent()->nullable();
