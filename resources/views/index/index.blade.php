@@ -34,6 +34,13 @@
             Stock List
         </h2>
     </x-slot>
+    <div class="bg-white shadow-md border-t border-solid border-gray">
+        <div class="container max-w-7xl mx-auto py-3 px-4 lg:px-8">
+        <a class="pr-3 text-blue-400" href="{{route('home')}}">ホーム</a>
+        <i class="fas fa-chevron-right pr-3"></i>
+        <span>在庫リスト</span>
+        </div>
+    </div>
 
     <div class="py-12 px-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

@@ -1,8 +1,9 @@
 <!-- CSS -->
 <style>
-    td{
-        padding:.5rem 1rem;
+    td {
+        padding: .5rem 1rem;
     }
+
     .logs,
     .logs th,
     .logs td {
@@ -11,15 +12,18 @@
         text-align: center;
         padding: 0;
     }
-    .logs th{
+
+    .logs th {
         padding: .7rem 1.5rem;
         background-color: rgba(209, 213, 219, .7);
     }
-    .logs td{
+
+    .logs td {
         padding: .7rem 1.5rem;
     }
-    .error{
-        color:red;
+
+    .error {
+        color: red;
     }
 </style>
 
@@ -30,6 +34,15 @@
             Stock List　/　Edit
         </h2>
     </x-slot>
+    <div class="bg-white shadow-md border-t border-solid border-gray">
+        <div class="container max-w-7xl mx-auto py-3 px-4 lg:px-8">
+        <a class="pr-3 text-blue-400" href="{{route('home')}}">ホーム</a>
+        <i class="fas fa-chevron-right pr-3"></i>
+        <a class="pr-3 text-blue-400" href="{{route('index')}}">在庫リスト</a>
+        <i class="fas fa-chevron-right pr-3"></i>
+        <span>編集</span>
+        </div>
+    </div>
 
     <div class="py-12 px-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
