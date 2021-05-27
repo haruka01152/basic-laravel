@@ -36,11 +36,11 @@
     </x-slot>
     <div class="bg-white shadow-md border-t border-solid border-gray">
         <div class="container max-w-7xl mx-auto py-3 px-4 lg:px-8">
-        <a class="pr-3 text-blue-400" href="{{route('home')}}">ホーム</a>
-        <i class="fas fa-chevron-right pr-3"></i>
-        <a class="pr-3 text-blue-400" href="{{route('index')}}">在庫リスト</a>
-        <i class="fas fa-chevron-right pr-3"></i>
-        <span>編集</span>
+            <a class="pr-3 text-blue-400" href="{{route('home')}}">ホーム</a>
+            <i class="fas fa-chevron-right pr-3"></i>
+            <a class="pr-3 text-blue-400" href="{{route('index')}}">在庫リスト</a>
+            <i class="fas fa-chevron-right pr-3"></i>
+            <span>編集</span>
         </div>
     </div>
 
@@ -50,33 +50,39 @@
                 <h3 class="text-lg">Product Number :　{{$item->id}}</h3>
 
                 <form action="" method="post" class="text-center">
-                    <table class="flex justify-center my-12 pt-4 pb-8 border-solid border-gray-500 border">
-                        @csrf
-                        <tr>
-                            <th>仕入先</th>
-                            <th>商品名</th>
-                            <th>価格</th>
-                            <th>数量</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <select name="maker">
-                                    @foreach($makers as $maker)
-                                    @if($maker->name === $item->makers->name)
-                                    <option value="{{$maker->id}}" selected>{{$maker->name}}</option>
-                                    @else
-                                    <option value="{{$maker->id}}">{{$maker->name}}</option>
-                                    @endif
-                                    @endforeach
-                                </select>
-                            </td>
-                            <td><input type="text" name="product_name" value="{{$item->name}}"></td>
-                            <td><input type="number" name="price" value="{{$item->price}}" style="width:150px"></td>
-                            <td><input type="number" name="quantity" value="{{$item->quantity}}" style="width:100px;"></td>
-                        </tr>
-                    </table>
+                    @csrf
 
-                    <input type="submit" value="更新" class="cursor-pointer text-lg text-white bg-red-400 inline-block w-24 h-10 rounded-lg">
+                    <div class="py-16 flex flex-col lg:flex-row justify-center">
+                        <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
+                            <label for="maker">仕入先</label>
+                            <select name="maker" class="w-full md:w-3/4 lg:w-auto lg:ml-2 lg:mr-7">
+                                @foreach($makers as $maker)
+                                @if($maker->name === $item->makers->name)
+                                <option value="{{$maker->id}}" selected>{{$maker->name}}</option>
+                                @else
+                                <option value="{{$maker->id}}">{{$maker->name}}</option>
+                                @endif
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
+                            <label for="product_name">商品名</label>
+                            <input type="text" name="product_name" value="{{$item->name}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-auto">
+                        </div>
+
+                        <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
+                            <label for="price">価格</label>
+                            <input type="number" name="price" value="{{$item->price}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-36">
+                        </div>
+
+                        <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
+                            <label for="quantity">数量</label>
+                            <input type="number" name="quantity" value="{{$item->quantity}}" class="lg:ml-2 w-full md:w-3/4 lg:w-24">
+                        </div>
+                    </div>
+
+                    <input type="submit" value="更新" class="cursor-pointer text-lg text-white bg-red-400 inline-block w-2/4 lg:w-24 h-12 lg:h-10 rounded-lg shadow-md">
                 </form>
 
                 @error('product_name')
