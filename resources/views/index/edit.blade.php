@@ -4,6 +4,10 @@
         padding: .5rem 1rem;
     }
 
+    tbody{
+        width:100%;
+        display: table;
+    }
     .logs,
     .logs th,
     .logs td {
@@ -99,10 +103,10 @@
 
             </div>
 
-            <div class="bg-white p-10 overflow-hidden shadow-xl sm:rounded-lg mt-10">
+            <div class="bg-white p-10 overflow-hidden shadow-xl sm:rounded-lg mt-10 ">
                 <h3 class="text-lg">変更履歴 （直近10件）</h3>
 
-                <table class="logs m-auto my-10 block overflow-x-scroll whitespace-nowrap lg:overflow-auto lg:table">
+                <table class="logs m-auto my-10 block overflow-x-scroll whitespace-nowrap">
                     <tr>
                         <th>更新者</th>
                         <th>変更後の内容</th>
