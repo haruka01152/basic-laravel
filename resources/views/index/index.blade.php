@@ -59,13 +59,17 @@
                 <div class="mb-10 flex items-center">
                     <a href="{{route('index.add')}}" class="cursor-pointer text-lg text-white bg-red-400 inline-block py-2 px-4 rounded-lg shadow-md">新規作成</a>
 
-                    <form action="{{route('index.find')}}" method="get" class="mb-0 ml-10 flex items-center">
+                    <form action="{{route('index.find', ['find' => $find])}}" method="get" class="mb-0 ml-10 flex items-center">
+
                     @csrf
                         <i class="fas fa-search fa-lg mr-2"></i>
                         <input type="text" name="find" value="">
+
+                        <input type="submit" value="検索">
                     </form>
                 </div>
 
+                @if(count($items) > 0)
                 <table class="m-auto block overflow-x-scroll whitespace-nowrap w-full">
                     <tr>
                         <th>仕入先</th>
@@ -90,6 +94,8 @@
                 </table>
 
                 {{$items->links()}}
+
+                @endif
             </div>
 
             <div class="mt-10 text-center">

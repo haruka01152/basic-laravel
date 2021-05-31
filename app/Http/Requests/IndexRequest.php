@@ -13,12 +13,7 @@ class IndexRequest extends FormRequest
      */
     public function authorize()
     {
-        if($this->path() == 'index/edit' || $this->path() == 'index/add')
-        {
-            return true;
-        }else{
-            return false;
-        }
+        return true;
     }
 
     /**
