@@ -25,6 +25,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     Route::prefix('index')->group(function(){
         Route::get('/', 'IndexController@index')->name('index');
+        Route::post('/')->name('index.find');
 
         Route::get('add', 'IndexController@add')->name('index.add');
         Route::post('add', 'IndexController@create');

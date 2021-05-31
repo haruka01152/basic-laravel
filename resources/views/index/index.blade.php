@@ -56,10 +56,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white py-10 px-5 overflow-hidden shadow-xl sm:rounded-lg">
 
-                <div class="mb-10">
+                <div class="mb-10 flex items-center">
                     <a href="{{route('index.add')}}" class="cursor-pointer text-lg text-white bg-red-400 inline-block py-2 px-4 rounded-lg shadow-md">新規作成</a>
 
-                    
+                    <form action="{{route('index.find')}}" method="get" class="mb-0 ml-10 flex items-center">
+                    @csrf
+                        <i class="fas fa-search fa-lg mr-2"></i>
+                        <input type="text" name="find" value="">
+                    </form>
                 </div>
 
                 <table class="m-auto block overflow-x-scroll whitespace-nowrap w-full">
@@ -84,6 +88,8 @@
                     </tr>
                     @endforeach
                 </table>
+
+                {{$items->links()}}
             </div>
 
             <div class="mt-10 text-center">

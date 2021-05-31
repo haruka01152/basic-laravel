@@ -14,8 +14,20 @@ class IndexController extends Controller
 
     public function index()
     {
-        $items = Product::all();
+        $items = Product::paginate(3);
         return view('index.index', compact('items'));
+    }
+
+    public function find($find)
+    {
+        $items = Product::orderBy('maker_id', 'asc')->where(function ($query) {
+            // 検索機能
+            if ($find = request('find')) {
+                $query->where('name', 'LIKE', "%{$find}%")->orWhere('','LIKE',"%{$find}%")->orWhere('body','LIKE',"%{$find}%");
+            }
+        })->paginate(10);
+
+        return view('index.index', compact('items', 'find'));
     }
 
     public function add()
