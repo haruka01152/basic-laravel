@@ -57,10 +57,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white py-10 px-5 overflow-hidden shadow-xl sm:rounded-lg">
 
-                <div class="mb-10 flex items-center">
+                <div class="mb-10 flex flex-col justify-start lg:flex-row items-start lg:items-center">
                     <a href="{{route('index.add')}}" class="cursor-pointer text-lg text-white bg-red-400 inline-block py-2 px-4 rounded-lg shadow-md">新規作成</a>
 
-                    <form class="mb-0 ml-10 flex items-center">
+                    <form class="mb-0 mt-8 lg:mt-0 lg:ml-10 flex items-center">
 
                         @csrf
                         <i class="fas fa-search fa-lg mr-2"></i>
