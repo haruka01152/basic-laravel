@@ -12,26 +12,18 @@ use App\Http\Requests\IndexRequest;
 class IndexController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $items = Product::paginate(3);
-        $findValue = "仕入先または商品名";
-        return view('index.index', compact('items', 'findValue'));
-    }
 
-    public function find(IndexRequest $request)
-    {
-        $find = $request('find');
+        $items = Product::orderBy('maker_id', 'asc')->where(function ($query){
 
-        dd($find);
+            if($find = request('find')){
+                $query->where('name', 'LIKE', "%{$find}%");
+            }
 
-        $data = Product::where('name', 'like', '%'.$find.'%');
-        $data = Maker::where('name', 'like', '%'.$find.'%');
-
-        $items = $data->paginate(2);
+        })->paginate(3);
 
         return view('index.index', compact('items'));
-
     }
 
     public function add()

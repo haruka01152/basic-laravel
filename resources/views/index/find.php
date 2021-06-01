@@ -8,11 +8,10 @@
         padding: 0;
     }
 
-    tbody {
-        width: 100%;
+    tbody{
+        width:100%;
         display: table;
     }
-
     th {
         cursor: default;
         background-color: rgba(209, 213, 219, .7);
@@ -60,13 +59,13 @@
                 <div class="mb-10 flex items-center">
                     <a href="{{route('index.add')}}" class="cursor-pointer text-lg text-white bg-red-400 inline-block py-2 px-4 rounded-lg shadow-md">新規作成</a>
 
-                    <form class="mb-0 ml-10 flex items-center">
+                    <form action="{{route('index.find')}}" method="get" class="mb-0 ml-10 flex items-center">
 
-                        @csrf
+                    @csrf
                         <i class="fas fa-search fa-lg mr-2"></i>
-                        <input type="text" name="find" value="{{request('find')}}" placeholder="商品名を検索">
+                        <input type="text" name="find" value="">
 
-                        <input type="submit" value="検索" class="py-2 px-3 ml-5 border border-gray-400">
+                        <input type="submit" value="検索">
                     </form>
                 </div>
 
@@ -95,12 +94,6 @@
                 </table>
 
                 {{$items->links()}}
-
-                @else
-
-                <div class="py-10 text-center">
-                    <p>データがありません。</p>
-                </div>
 
                 @endif
             </div>
