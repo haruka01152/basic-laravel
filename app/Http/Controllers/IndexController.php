@@ -14,15 +14,31 @@ class IndexController extends Controller
 
     public function index(Request $request)
     {
+        if ($request['sort'] === 'updated_at') {
 
-        $items = Product::orderBy('maker_id', 'asc')->where(function ($query){
+            $items = Product::orderBy('updated_at', 'desc')->paginate(10);
 
-            if($find = request('find')){
-                $query->where('name', 'LIKE', "%{$find}%");
-            }
+        } else {
 
-        })->paginate(3);
+            $items = Product::orderBy('maker_id', 'asc')->where(function ($query) {
 
+                if ($find = request('find')) {
+                    $query->where('name', 'LIKE', "%{$find}%");
+                }
+            })->paginate(10);
+
+        }
+
+        return view('index.index', compact('items'));
+    }
+
+    public function sort(Request $request)
+    {
+        if ($request['order'] === 'updated_at') {
+            $items = Product::orderBy('updated_at', 'desc')->paginate(10);
+        } else {
+            $items = Product::orderBy('maker_id', 'asc')->paginate(10);
+        }
         return view('index.index', compact('items'));
     }
 
@@ -71,7 +87,7 @@ class IndexController extends Controller
 
         $new = Product::find($id); //更新後の商品情報を取得
 
-        if(isset($old)){
+        if (isset($old)) {
             if ($old->maker != $new->maker_id || $old->product_name != $new->name || $old->price != $new->price || $old->quantity != $new->quantity) {
                 Log::create([
                     'product_id' => $request->id,
@@ -83,10 +99,10 @@ class IndexController extends Controller
                 ]);
 
                 return view('index.update', compact('id'));
-            }else{
+            } else {
                 return view('index.notupdate', compact('id'));
-            } 
-        }else{
+            }
+        } else {
             Log::create([
                 'product_id' => $request->id,
                 'editor' => Auth::id(),

@@ -68,6 +68,11 @@
 
                         <input type="submit" value="検索" class="py-2 px-3 ml-5 border border-gray-400">
                     </form>
+
+                    <div class="mt-10 lg:mt-0 lg:ml-10">
+                        
+                        <a href="?sort=updated_at" class="cursor-pointer text-lg text-white bg-blue-500 inline-block py-2 px-4 rounded-lg shadow-md">更新順</a>
+                    </div>
                 </div>
 
                 @if(count($items) > 0)
