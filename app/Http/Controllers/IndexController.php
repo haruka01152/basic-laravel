@@ -14,6 +14,8 @@ class IndexController extends Controller
 
     public function index(Request $request)
     {
+        $makers = Maker::all();
+
         if ($request['sort'] === 'updated_at') {
 
             $items = Product::orderBy('updated_at', 'desc')->paginate(10);
@@ -21,7 +23,6 @@ class IndexController extends Controller
         } else {
 
             $items = Product::orderBy('maker_id', 'asc')->where(function ($query) {
-
                 if ($find = request('find')) {
                     $query->where('name', 'LIKE', "%{$find}%");
                 }
@@ -29,7 +30,8 @@ class IndexController extends Controller
 
         }
 
-        return view('index.index', compact('items'));
+        return view('index.index', compact('items','makers'));
+        
     }
 
     public function sort(Request $request)

@@ -15,7 +15,7 @@
 
     th {
         cursor: default;
-        background-color: rgba(209, 213, 219, .7);
+        background-color: rgba(209, 213, 219);
     }
 
     tr {
@@ -55,9 +55,9 @@
 
     <div class="py-12 px-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white py-10 px-5 overflow-hidden shadow-xl sm:rounded-lg">
 
-                <div class="mb-10 flex flex-col justify-start lg:flex-row items-start lg:items-center">
+            <div class="mb-10 bg-white py-10 px-5 overflow-hidden shadow-xl sm:rounded-lg">
+                <div class="flex flex-col justify-start lg:flex-row items-start lg:items-center">
                     <a href="{{route('index.add')}}" class="cursor-pointer text-lg text-white bg-red-400 inline-block py-2 px-4 rounded-lg shadow-md">新規作成</a>
 
                     <form class="mb-0 mt-8 lg:mt-0 lg:ml-10 flex items-center">
@@ -66,14 +66,25 @@
                         <i class="fas fa-search fa-lg mr-2"></i>
                         <input type="text" name="find" value="{{request('find')}}" placeholder="商品名を検索">
 
+                        <select name="maker" class="lg:ml-5">
+                            <option value='' disabled selected style='display:none;'>選択してください</option>
+                            @foreach($makers as $maker)
+                            <option value="{{$maker->id}}" @if(request()->maker == $maker->id)selected @endif>{{$maker->name}}</option>
+                            @endforeach
+                        </select>
+
                         <input type="submit" value="検索" class="py-2 px-3 ml-5 border border-gray-400">
                     </form>
 
-                    <div class="mt-10 lg:mt-0 lg:ml-10">
-                        
-                        <a href="?sort=updated_at" class="cursor-pointer text-lg text-white bg-blue-500 inline-block py-2 px-4 rounded-lg shadow-md">更新順</a>
+                    <div class="mt-10 lg:mt-0 lg:ml-auto lg:mr-1">
+                        <a href="{{route('index', ['sort' => 'updated_at'])}}" class="cursor-pointer text-white bg-blue-500 inline-block py-2 px-4">更新順</a>
+
+                        <a href="{{route('index')}}" class="ml-5 cursor-pointer text-sm border border-gray-500 inline-block py-1 px-2">リセット</a>
                     </div>
                 </div>
+            </div>
+
+            <div class="bg-white py-10 px-5 overflow-hidden shadow-xl sm:rounded-lg">
 
                 @if(count($items) > 0)
                 <table class="m-auto block overflow-x-scroll whitespace-nowrap w-full">

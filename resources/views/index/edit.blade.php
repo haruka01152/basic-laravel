@@ -12,14 +12,14 @@
     .logs th,
     .logs td {
         padding: .5rem 1rem;
-        border: 1px solid rgba(107, 114, 128, 1);
+        border: 1px solid rgba(107, 114, 128);
         text-align: center;
         padding: 0;
     }
 
     .logs th {
         padding: .7rem 1.5rem;
-        background-color: rgba(209, 213, 219, .7);
+        background-color: rgba(209, 213, 219);
     }
 
     .logs td {
