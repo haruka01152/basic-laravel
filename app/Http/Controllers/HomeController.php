@@ -13,7 +13,7 @@ class HomeController extends Controller
     public function log()
     {
         $makers = Maker::all();
-        $logs = Log::orderBy('updated_at', 'desc')->paginate(10);
+        $logs = Log::orderBy('updated_at', 'desc')->paginate(50);
         return view('log', compact('logs'));
     }
 }
