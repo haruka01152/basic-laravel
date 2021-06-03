@@ -23,6 +23,10 @@ class IndexController extends Controller
         } else {
 
             $items = Product::orderBy('maker_id', 'asc')->where(function ($query) {
+                if($maker = request('maker')){
+                    $query->where('maker_id', $maker);
+                }
+
                 if ($find = request('find')) {
                     $query->where('name', 'LIKE', "%{$find}%");
                 }
