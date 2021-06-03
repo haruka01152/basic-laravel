@@ -46,7 +46,7 @@
             Log
         </h2>
     </x-slot>
-    <div class="bg-white border-t border-b border-solid border-gray-300 shadow-lg">
+    <div class="hidden lg:block bg-white border-t border-b border-solid border-gray-300 shadow-lg">
         <div class="container flex justify-between max-w-7xl mx-auto px-4 lg:px-8">
             <a class="hover:bg-gray-200 inline-block py-3 w-48 text-center border-r border-l border-gray-300" href="{{route('home')}}">ホーム</a>
             <a class="hover:bg-gray-200 inline-block py-3 w-48 text-center border-r border-l border-gray-300" href="{{route('index')}}">在庫リスト</a>
@@ -63,16 +63,16 @@
                 @if(count($logs) > 0)
                 <table class="logs m-auto my-10 block overflow-x-scroll whitespace-nowrap">
                     <tr>
-                        <th>更新者</th>
                         <th>商品ID</th>
                         <th>変更後の内容</th>
+                        <th>更新者</th>
                         <th>更新日時</th>
                     </tr>
                     @foreach($logs as $log)
                     <tr>
-                        <td><a class="td-link" href="{{route('index.edit', ['id' => $log->product_id])}}">{{$log->users->name}}</a></td>
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $log->product_id])}}">{{$log->product_id}}</a></td>
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $log->product_id])}}">仕入先 => {{$log->makers->name}}, 商品名 => {{$log->product_name}}, 価格 => {{$log->price}}, 数量 => {{$log->quantity}}</a></td>
+                        <td><a class="td-link" href="{{route('index.edit', ['id' => $log->product_id])}}">{{$log->users->name}}</a></td>
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $log->product_id])}}">{{$log->updated_at}}</a></td>
                     </tr>
                     @endforeach

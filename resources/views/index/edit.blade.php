@@ -123,7 +123,11 @@
             </div>
 
             <div class="mt-10 text-center">
+                @if(url()->previous() == url('index'))
                 <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{route('index')}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　一覧へ戻る</a>
+                @elseif(url()->previous() == url('log'))
+                <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{route('log')}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　変更履歴へ戻る</a>
+                @endif
             </div>
         </div>
     </div>
