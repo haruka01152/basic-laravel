@@ -38,13 +38,13 @@
             Stock List　/　Edit
         </h2>
     </x-slot>
-    <div class="bg-white shadow-md border-t border-solid border-gray">
-        <div class="container max-w-7xl mx-auto py-3 px-4 lg:px-8">
-            <a class="pr-3 text-blue-400" href="{{route('home')}}">ホーム</a>
-            <i class="fas fa-chevron-right pr-3"></i>
-            <a class="pr-3 text-blue-400" href="{{route('index')}}">在庫リスト</a>
-            <i class="fas fa-chevron-right pr-3"></i>
-            <span>編集</span>
+    <div class="bg-white border-t border-b border-solid border-gray-300 shadow-lg">
+        <div class="container flex justify-between max-w-7xl mx-auto px-4 lg:px-8">
+            <a class="hover:bg-gray-200 inline-block py-3 w-48 text-center border-r border-l border-gray-300" href="{{route('home')}}">ホーム</a>
+            <a class="hover:bg-gray-200 inline-block py-3 w-48 text-center border-r border-l border-gray-300" href="{{route('index')}}">在庫リスト</a>
+            <a class="hover:bg-gray-200 inline-block py-3 w-48 text-center border-r border-l border-gray-300" href="{{route('log')}}">変更履歴</a>
+            <a class="hover:bg-gray-200 inline-block py-3 w-48 text-center border-r border-l border-gray-300" href="{{route('csv')}}">CSVダウンロード</a>
+            <a class="hover:bg-gray-200 inline-block py-3 w-48 text-center border-r border-l border-gray-300" href="{{route('settings')}}">設定</a>
         </div>
     </div>
 

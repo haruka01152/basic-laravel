@@ -33,10 +33,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
         Route::post('edit', 'IndexController@update');
     });
 
-    Route::get('log', 'IndexController@log')->name('log');
+    Route::get('log', 'HomeController@log')->name('log');
 
-    Route::get('csv', 'IndexController@csv')->name('csv');
+    Route::get('csv', 'HomeController@csv')->name('csv');
 
-    Route::get('settings', 'IndexController@settings')->name('settings');
+    Route::get('settings', 'HomeController@settings')->name('settings');
 });
 

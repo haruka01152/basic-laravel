@@ -16,26 +16,32 @@ class IndexController extends Controller
     {
         $makers = Maker::all();
 
-        if ($request['sort'] === 'updated_at') {
+        $items = Product::orderBy('maker_id', 'asc')->where(function ($query) {
+            if ($maker = request('maker')) {
+                $query->where('maker_id', $maker);
+            }
 
-            $items = Product::orderBy('updated_at', 'desc')->paginate(10);
+            if ($find = request('find')) {
+                $query->where('name', 'LIKE', "%{$find}%");
+            }
+        })->paginate(10);
 
-        } else {
-
-            $items = Product::orderBy('maker_id', 'asc')->where(function ($query) {
-                if($maker = request('maker')){
-                    $query->where('maker_id', $maker);
-                }
-
-                if ($find = request('find')) {
-                    $query->where('name', 'LIKE', "%{$find}%");
-                }
-            })->paginate(10);
-
+        // 何も入力せず検索したら最初のindexURLにリダイレクト
+        if(isset($request['find']) && $request['find'] == '' && !isset($request['maker'])){
+            return redirect()->route('index');
         }
 
-        return view('index.index', compact('items','makers'));
-        
+        // if ($request['sort'] === 'updated_at') {
+
+
+        // }else{
+
+        //     $items = $items_find;
+        // }
+
+        // dd($items_find);
+
+        return view('index.index', compact('items', 'makers'));
     }
 
     public function sort(Request $request)
@@ -69,6 +75,8 @@ class IndexController extends Controller
             'price' => $request->price,
             'quantity' => $request->quantity,
         ]);
+
+        $request->session()->regenerateToken();
 
         return view('index.create', compact('latest'));
     }
