@@ -16,7 +16,7 @@ class IndexController extends Controller
     {
         $makers = Maker::all();
 
-        $items = Product::orderBy('maker_id', 'asc')->where(function ($query) {
+        $items = Product::where(function ($query) {
             if ($maker = request('maker')) {
                 $query->where('maker_id', $maker);
             }
@@ -24,22 +24,12 @@ class IndexController extends Controller
             if ($find = request('find')) {
                 $query->where('name', 'LIKE', "%{$find}%");
             }
-        })->paginate(10);
+        })->sortable()->paginate(15);
 
         // 何も入力せず検索したら最初のindexURLにリダイレクト
-        if(isset($request['find']) && $request['find'] == '' && !isset($request['maker'])){
+        if (isset($request['find']) && $request['find'] == '' && $request['maker'] == '') {
             return redirect()->route('index');
         }
-
-        // if ($request['sort'] === 'updated_at') {
-
-
-        // }else{
-
-        //     $items = $items_find;
-        // }
-
-        // dd($items_find);
 
         return view('index.index', compact('items', 'makers'));
     }

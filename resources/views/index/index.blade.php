@@ -70,7 +70,7 @@
                         <input type="text" name="find" value="{{request('find')}}" placeholder="商品名を検索">
 
                         <select name="maker" class="lg:ml-5">
-                            <option value='' disabled selected style='display:none;'>選択してください</option>
+                            <option value="">選択してください</option>
                             @foreach($makers as $maker)
                             <option value="{{$maker->id}}" @if(request()->maker == $maker->id)selected @endif>{{$maker->name}}</option>
                             @endforeach
@@ -80,9 +80,11 @@
                     </form>
 
                     <div class="mt-10 lg:mt-0 lg:ml-auto lg:mr-1">
-                        <a href="{{route('index', ['sort' => 'updated_at'])}}" class="cursor-pointer text-white bg-blue-500 inline-block py-2 px-4">更新順</a>
+                    <tr>
+                        <td>@sortablelink('updated_at', '更新順に並べる')</td>
+                    </tr>
 
-                        <a href="{{route('index')}}" class="ml-5 cursor-pointer text-sm border border-gray-500 inline-block py-1 px-2">リセット</a>
+                        <a href="{{route('index')}}" class="ml-5 cursor-pointer text-sm border border-gray-500 inline-block py-1 px-2">検索＆並べ替えリセット</a>
                     </div>
                 </div>
             </div>
@@ -113,7 +115,7 @@
                     @endforeach
                 </table>
 
-                {{$items->links()}}
+                {{$items->appends(request()->query())->links()}}
 
                 @else
 
