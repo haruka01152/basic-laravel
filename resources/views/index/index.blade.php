@@ -46,7 +46,7 @@
         </h2>
     </x-slot>
 
-    <div class="bg-white border-t border-b border-solid border-gray-300 shadow-lg">
+    <div class="bg-white border-t border-b border-solid border-gray-300 shadow-lg hidden sm:block">
         <div class="container flex justify-between max-w-7xl mx-auto px-4 lg:px-8">
             <a class="hover:bg-gray-200 inline-block py-3 w-48 text-center border-r border-l border-gray-300" href="{{route('home')}}">ホーム</a>
             <a class="hover:bg-gray-200 inline-block py-3 w-48 text-center border-r border-l border-gray-300" href="{{route('index')}}">在庫リスト</a>
@@ -63,28 +63,28 @@
                 <div class="flex flex-col justify-start lg:flex-row items-start lg:items-center">
                     <a href="{{route('index.add')}}" class="cursor-pointer text-lg text-white bg-red-400 inline-block py-2 px-4 rounded-lg shadow-md">新規作成</a>
 
-                    <form class="mb-0 mt-8 lg:mt-0 lg:ml-10 flex items-center">
+                    <form class="mb-0 mt-8 lg:mt-0 lg:ml-10 flex lg:items-center flex-col md:flex-row w-full lg:w-auto">
 
                         @csrf
-                        <i class="fas fa-search fa-lg mr-2"></i>
-                        <input type="text" name="find" value="{{request('find')}}" placeholder="商品名を検索">
+                        <i class="fas fa-search fa-lg mr-2 md:mt-4"></i>
+                        <input type="text" name="find" value="{{request('find')}}" placeholder="商品名を検索" class="mt-3 md:mt-0">
 
-                        <select name="maker" class="lg:ml-5">
+                        <select name="maker" class="mt-3 md:ml-5 md:mt-0">
                             <option value="">選択してください</option>
                             @foreach($makers as $maker)
                             <option value="{{$maker->id}}" @if(request()->maker == $maker->id)selected @endif>{{$maker->name}}</option>
                             @endforeach
                         </select>
 
-                        <input type="submit" value="検索" class="py-2 px-3 ml-5 border border-gray-400">
+                        <input type="submit" value="検索" class="py-2 px-3 md:ml-5 border border-gray-400 mt-3 ml-0 md:mt-0">
                     </form>
 
-                    <div class="mt-10 lg:mt-0 lg:ml-auto lg:mr-1">
+                    <div class="mt-10 lg:mt-0 lg:ml-auto">
                     <tr>
                         <td>@sortablelink('updated_at', '更新順に並べる')</td>
                     </tr>
 
-                        <a href="{{route('index')}}" class="ml-5 cursor-pointer text-sm border border-gray-500 inline-block py-1 px-2">検索＆並べ替えリセット</a>
+                        <a href="{{route('index')}}" class="ml-3 cursor-pointer text-sm border border-gray-500 inline-block py-1 px-2">条件リセット</a>
                     </div>
                 </div>
             </div>
@@ -115,7 +115,9 @@
                     @endforeach
                 </table>
 
+                <div class="mt-5 md:mt-0">
                 {{$items->appends(request()->query())->links()}}
+                </div>
 
                 @else
 
