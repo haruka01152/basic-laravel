@@ -36,6 +36,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('log', 'HomeController@log')->name('log');
 
     Route::get('csv', 'HomeController@csv')->name('csv');
+    Route::get('download', 'HomeController@download')->name('download');
 
     Route::get('settings', 'HomeController@settings')->name('settings');
 });

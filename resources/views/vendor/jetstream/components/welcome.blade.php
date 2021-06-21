@@ -3,7 +3,7 @@
         <x-jet-application-logo class="block h-12 w-auto" />
     </div> -->
 
-    <div class="text-2xl">
+    <div class="text-xl lg:text-2xl">
         在庫管理システム
     </div>
 
@@ -16,19 +16,19 @@
 </div>
 
 <div class="text-center bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
-    <a href="{{route('index')}}" class="p-8 text-xl hover:bg-gray-200 transition ease-out duration-500">
+    <a href="{{route('index')}}" class="p-8 lg:text-xl hover:bg-gray-200 transition ease-out duration-500">
     在庫リスト閲覧・編集
     </a>
 
-    <a href="{{route('log')}}" class="p-8 border-t border-gray-200 md:border-t-0 md:border-l text-xl hover:bg-gray-200 transition ease-out duration-500">
+    <a href="{{route('log')}}" class="p-8 border-t border-gray-200 md:border-t-0 md:border-l lg:text-xl hover:bg-gray-200 transition ease-out duration-500">
     変更履歴
     </a>
 
-    <a href="{{route('csv')}}" class="p-8 border-t border-gray-200 text-xl hover:bg-gray-200 transition ease-out duration-500">
+    <a href="{{route('csv')}}" class="p-8 border-t border-gray-200 lg:text-xl hover:bg-gray-200 transition ease-out duration-500">
     CSVダウンロード
     </a>
 
-    <a href="{{route('settings')}}" class="p-8 border-t border-gray-200 md:border-l text-xl hover:bg-gray-200 transition ease-out duration-500">
+    <a href="{{route('settings')}}" class="p-8 border-t border-gray-200 md:border-l lg:text-xl hover:bg-gray-200 transition ease-out duration-500">
     設定
     </a>
 </div>

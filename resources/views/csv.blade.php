@@ -17,8 +17,8 @@
 
     <div class="py-12 px-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <h1 class="p-3">hello,this is the csv page.</h1>
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg text-center">
+            <a href="{{route('download')}}" class="cursor-pointer text-white bg-blue-400 inline-block text-lg py-2 px-4 my-10 shadow-md">CSVデータをダウンロードする</a>
             </div>
 
             <div class="mt-10 text-center">

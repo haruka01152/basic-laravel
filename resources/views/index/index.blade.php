@@ -66,7 +66,7 @@
                     <form class="mb-0 mt-8 lg:mt-0 lg:ml-10 flex lg:items-center flex-col md:flex-row w-full lg:w-auto">
 
                         @csrf
-                        <i class="fas fa-search fa-lg mr-2 md:mt-4"></i>
+                        <i class="fas fa-search fa-lg mr-2 mt-0 md:mt-4 lg:mt-0"></i>
                         <input type="text" name="find" value="{{request('find')}}" placeholder="商品名を検索" class="mt-3 md:mt-0">
 
                         <select name="maker" class="mt-3 md:ml-5 md:mt-0">

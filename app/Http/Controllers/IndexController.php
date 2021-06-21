@@ -34,16 +34,6 @@ class IndexController extends Controller
         return view('index.index', compact('items', 'makers'));
     }
 
-    public function sort(Request $request)
-    {
-        if ($request['order'] === 'updated_at') {
-            $items = Product::orderBy('updated_at', 'desc')->paginate(10);
-        } else {
-            $items = Product::orderBy('maker_id', 'asc')->paginate(10);
-        }
-        return view('index.index', compact('items'));
-    }
-
     public function add()
     {
         $makers = Maker::all();
