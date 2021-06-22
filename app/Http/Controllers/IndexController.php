@@ -54,6 +54,7 @@ class IndexController extends Controller
             'product_name' => $request->product_name,
             'price' => $request->price,
             'quantity' => $request->quantity,
+            'action' => 0,
         ]);
 
         $request->session()->regenerateToken();
@@ -92,6 +93,7 @@ class IndexController extends Controller
                     'product_name' => $request->product_name,
                     'price' => $request->price,
                     'quantity' => $request->quantity,
+                    'action' => 1,
                 ]);
 
                 return view('index.update', compact('id'));
@@ -106,9 +108,34 @@ class IndexController extends Controller
                 'product_name' => $request->product_name,
                 'price' => $request->price,
                 'quantity' => $request->quantity,
+                'action' => 1,
             ]);
 
             return view('index.update', compact('id'));
         }
+    }
+
+    public function delete(Request $request)
+    {
+        $id = $request->id;
+        $item = Product::findOrFail($request->id);
+        $maker = Maker::findOrFail($item->makers->id);
+        return view('index.delete', compact('item', 'maker'));
+    }
+
+    public function destroy(Request $request)
+    {
+        $id = $request->id;
+        Log::create([
+            'product_id' => $id,
+            'editor' => Auth::id(),
+            'maker' =>  $request->maker,
+            'product_name' => $request->product_name,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'action' => 2,
+        ]);
+        Product::destroy($id);
+        return view('index.destroy');
     }
 }

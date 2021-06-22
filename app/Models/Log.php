@@ -16,6 +16,7 @@ class Log extends Model
         'product_name',
         'price',
         'quantity',
+        'action',
     ];
 
     public function products()

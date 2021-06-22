@@ -4,10 +4,11 @@
         padding: .5rem 1rem;
     }
 
-    tbody{
-        width:100%;
+    tbody {
+        width: 100%;
         display: table;
     }
+
     .logs,
     .logs th,
     .logs td {
@@ -81,6 +82,10 @@
                     <input type="submit" value="更新" class="cursor-pointer text-lg text-white bg-red-400 inline-block w-2/4 lg:w-24 h-12 lg:h-10 rounded-lg shadow-md">
                 </form>
 
+                <div class="text-right">
+                    <a href="{{route('index.delete', ['id' => $item->id])}}" class="text-red-500 border-b border-red-500">×　この商品を削除する</a>
+                </div>
+
                 @error('product_name')
                 <p class="error">{{$message}}</p>
                 @enderror
@@ -115,7 +120,7 @@
                 </table>
 
                 <div class="mt-5 md:mt-0">
-                {{$logs->appends($params)->links()}}
+                    {{$logs->appends($params)->links()}}
                 </div>
                 @else
 

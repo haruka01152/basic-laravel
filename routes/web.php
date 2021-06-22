@@ -25,6 +25,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
         Route::get('edit', 'IndexController@edit')->name('index.edit');
         Route::post('edit', 'IndexController@update');
+
+        Route::get('delete', 'IndexController@delete')->name('index.delete');
+        Route::post('delete', 'IndexController@destroy');
     });
 
     Route::get('log', 'HomeController@log')->name('log');
