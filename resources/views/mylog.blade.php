@@ -4,6 +4,7 @@
         width: 100%;
         display: table;
     }
+
     .logs,
     .logs th,
     .logs td {
@@ -40,10 +41,12 @@
 </style>
 
 <x-app-layout>
-    @section('title', '変更履歴')
+    @section('title')
+    {{Auth::user()->name}}の変更履歴
+    @endsection
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Log
+            My Log
         </h2>
     </x-slot>
     <div class="hidden lg:block bg-white border-t border-b border-solid border-gray-300 shadow-lg hidden sm:block">
@@ -61,14 +64,12 @@
                     <tr>
                         <th>商品ID</th>
                         <th>変更後の内容</th>
-                        <th>更新者</th>
                         <th>更新日時</th>
                     </tr>
                     @foreach($logs as $log)
                     <tr>
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $log->product_id])}}">{{$log->product_id}}</a></td>
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $log->product_id])}}">仕入先 => {{$log->makers->name}}, 商品名 => {{$log->product_name}}, 価格 => {{$log->price}}, 数量 => {{$log->quantity}}</a></td>
-                        <td><a class="td-link" href="{{route('index.edit', ['id' => $log->product_id])}}">{{$log->users->name}}</a></td>
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $log->product_id])}}">{{$log->updated_at}}</a></td>
                     </tr>
                     @endforeach

@@ -28,7 +28,7 @@
     CSVダウンロード
     </a>
 
-    <a href="{{route('settings')}}" class="p-8 border-t border-gray-200 md:border-l lg:text-xl hover:bg-gray-200 transition ease-out duration-500">
-    設定
+    <a href="{{route('mypage')}}" class="p-8 border-t border-gray-200 md:border-l lg:text-xl hover:bg-gray-200 transition ease-out duration-500">
+    マイページ
     </a>
 </div>

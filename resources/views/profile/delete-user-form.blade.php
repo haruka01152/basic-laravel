@@ -12,7 +12,7 @@
         アカウントが削除されると、そのすべてのリソースとデータは完全に削除されます。アカウントを削除する前に、保持したいデータや情報を保存してください。
         </div>
 
-        <div class="mt-5">
+        <div class="mt-5 text-right">
             <x-jet-danger-button wire:click="confirmUserDeletion" wire:loading.attr="disabled">
             アカウントを削除する
             </x-jet-danger-button>

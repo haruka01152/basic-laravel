@@ -7,6 +7,7 @@ use App\Models\Log;
 use App\Models\Maker;
 use App\Models\Product;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -54,11 +55,18 @@ class HomeController extends Controller
         return $response;
     }
 
-    public function settings(Request $request)
+    public function mypage(Request $request)
     {
-        return view('settings', [
+        return view('mypage', [
             'request' => $request,
             'user' => $request->user(),
         ]);
+    }
+
+    public function mylog()
+    {
+        $makers = Maker::all();
+        $logs = Log::orderBy('updated_at', 'desc')->where('editor', Auth::id())->paginate(30);
+        return view('mylog', compact('makers', 'logs'));
     }
 }
