@@ -9,12 +9,6 @@
 
     <div class="py-12 px-3">
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-        <div class="mb-16 bg-white py-10 px-5 overflow-hidden shadow-xl sm:rounded-lg flex justify-center">
-
-        <a href="{{route('mylog')}}" class="cursor-pointer text-white bg-blue-400 inline-block text-lg py-2 px-4 shadow-md">自分の変更履歴を見る</a>
-        
-        </div>
-
 
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())
             @livewire('profile.update-profile-information-form')

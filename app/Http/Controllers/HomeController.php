@@ -6,17 +6,30 @@ use Illuminate\Http\Request;
 use App\Models\Log;
 use App\Models\Maker;
 use App\Models\Product;
+use App\Models\User;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     //
-    public function log()
+    public function log(Request $request)
     {
         $makers = Maker::all();
-        $logs = Log::orderBy('updated_at', 'desc')->paginate(30);
-        return view('log', compact('logs'));
+        $users = User::all();
+
+        $logs = Log::orderBy('updated_at', 'desc')->where(function ($query) {
+            if ($user = request('user')) {
+                $query->where('editor', $user);
+            }
+        })->paginate(30);
+
+        // 何も入力せず検索したら最初のログ画面にリダイレクト
+        if (isset($request['user']) && $request['user'] == '') {
+            return redirect()->route('log');
+        }
+
+        return view('log', compact('users', 'logs'));
     }
 
     public function csv()
@@ -61,12 +74,5 @@ class HomeController extends Controller
             'request' => $request,
             'user' => $request->user(),
         ]);
-    }
-
-    public function mylog()
-    {
-        $makers = Maker::all();
-        $logs = Log::orderBy('updated_at', 'desc')->where('editor', Auth::id())->paginate(30);
-        return view('mylog', compact('makers', 'logs'));
     }
 }
