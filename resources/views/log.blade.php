@@ -46,11 +46,7 @@
             Log
         </h2>
     </x-slot>
-    <div class="hidden lg:block bg-white border-t border-b border-solid border-gray-300 shadow-lg hidden sm:block">
-        <div class="container flex justify-between max-w-7xl mx-auto px-4 lg:px-8">
-           <x-mainmenu></x-mainmenu>
-        </div>
-    </div>
+    <x-mainmenu></x-mainmenu>
 
     <div class="py-12 px-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
