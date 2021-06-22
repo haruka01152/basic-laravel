@@ -63,10 +63,12 @@ class IndexController extends Controller
 
     public function edit(Request $request)
     {
+        $id = $request['id'];
         $item = Product::findOrFail($request->id);
         $makers = Maker::all();
-        $logs = Log::where('product_id', $request->id)->orderBy('updated_at', 'desc')->take(10)->get();
-        return view('index.edit', compact('item', 'makers', 'logs'));
+        $logs = Log::where('product_id', $request->id)->orderBy('updated_at', 'desc')->paginate(10);
+        $data['params'] = ['id' => $id];
+        return view('index.edit', compact('item', 'makers', 'logs'), $data);
     }
 
     public function update(IndexRequest $request)

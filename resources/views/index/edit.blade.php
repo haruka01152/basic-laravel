@@ -104,8 +104,9 @@
             </div>
 
             <div class="bg-white p-10 overflow-hidden shadow-xl sm:rounded-lg mt-10 ">
-                <h3 class="text-lg">変更履歴 （直近10件）</h3>
+                <h3 class="text-lg">変更履歴</h3>
 
+                @if(count($logs) > 0)
                 <table class="logs m-auto my-10 block overflow-x-scroll whitespace-nowrap">
                     <tr>
                         <th>更新者</th>
@@ -120,6 +121,17 @@
                     </tr>
                     @endforeach
                 </table>
+
+                <div class="mt-5 md:mt-0">
+                {{$logs->appends($params)->links()}}
+                </div>
+                @else
+
+                <div class="py-10 text-center">
+                    <p>データがありません。</p>
+                </div>
+
+                @endif
             </div>
 
             <div class="mt-10 text-center">
