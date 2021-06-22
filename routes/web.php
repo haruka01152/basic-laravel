@@ -13,12 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// ログイン前
-Route::get('/', function(){
-    return view('auth.login');
-});
-
-// ログイン後
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     Route::get('/', 'Controller@home')->name('home');

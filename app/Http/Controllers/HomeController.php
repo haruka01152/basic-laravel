@@ -54,8 +54,11 @@ class HomeController extends Controller
         return $response;
     }
 
-    public function settings()
+    public function settings(Request $request)
     {
-        return view('settings');
+        return view('profile.show', [
+            'request' => $request,
+            'user' => $request->user(),
+        ]);
     }
 }
