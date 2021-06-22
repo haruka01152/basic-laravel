@@ -16,14 +16,26 @@
     </div>
 
     <div class="py-12 px-3">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <h1 class="p-3">hello,this is the settings page.</h1>
-            </div>
+    <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+            @if (Laravel\Fortify\Features::canUpdateProfileInformation())
+                @livewire('profile.update-profile-information-form')
 
-            <div class="mt-10 text-center">
-                <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{route('home')}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　ホームへ戻る</a>
-            </div>
+                <x-jet-section-border />
+            @endif
+
+            @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
+                <div class="mt-10 sm:mt-0">
+                    @livewire('profile.update-password-form')
+                </div>
+
+                <x-jet-section-border />
+            @endif
+
+            @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
+                <div class="mt-10 sm:mt-0">
+                    @livewire('profile.delete-user-form')
+                </div>
+            @endif
         </div>
     </div>
 </x-app-layout>

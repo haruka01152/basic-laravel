@@ -43,6 +43,7 @@
     "Verify Email Address": "メールアドレスを確認してください",
     "Verify Your Email Address": "メールアドレスを確認してください",
     "We won't ask for your password again for a few hours.": "数時間の間、再びパスワードを求められることはありません。",
-    "You are logged in!": "あなたはログインしている！",
-    "Your email address is not verified.": "メールアドレスの認証が完了していません。"
+    "You are logged in!": "ログイン中です。",
+    "Your email address is not verified.": "メールアドレスの認証が完了していません。",
+    "current password": "現在のパスワード"
 }

@@ -134,6 +134,6 @@ return [
         'price' => '価格',
         'quantity' => '数量',
         'product_name' => '商品名',
-        'current password' => '新しいパスワード'
+        'current_password' => '現在のパスワード'
     ],
 ];

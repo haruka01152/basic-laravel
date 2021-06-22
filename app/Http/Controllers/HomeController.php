@@ -56,7 +56,7 @@ class HomeController extends Controller
 
     public function settings(Request $request)
     {
-        return view('profile.show', [
+        return view('settings', [
             'request' => $request,
             'user' => $request->user(),
         ]);
