@@ -135,7 +135,7 @@ class IndexController extends Controller
             'quantity' => $request->quantity,
             'action' => 2,
         ]);
-        Product::where('id', $id)->update(['status' => 1]);
+        Product::where('id', $id)->delete();
         return view('index.destroy');
     }
 }

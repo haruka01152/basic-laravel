@@ -46,6 +46,7 @@
             <div class="bg-white p-10 overflow-hidden shadow-xl sm:rounded-lg">
                 <h3 class="text-lg">Product Number :　{{$item->id}}</h3>
 
+                @if($item->status == 0)
                 <form action="" method="post" class="text-center">
                     @csrf
 
@@ -86,6 +87,36 @@
                     <a href="{{route('index.delete', ['id' => $item->id])}}" class="text-red-500 border-b border-red-500">×　この商品を削除する</a>
                 </div>
 
+                @else
+
+                <div class="py-16 flex flex-col lg:flex-row justify-center">
+                    <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
+                        <label for="maker">仕入先</label>
+                        <input type="text" class="w-full md:w-3/4 lg:w-auto lg:ml-2 lg:mr-7 bg-gray-200" value="{{$item->makers->name}}" disabled>
+                    </div>
+
+                    <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
+                        <label for="product_name">商品名</label>
+                        <input type="text" value="{{$item->name}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-auto bg-gray-200" disabled>
+                    </div>
+
+                    <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
+                        <label for="price">価格</label>
+                        <input type="number" value="{{$item->price}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-36 bg-gray-200" disabled>
+                    </div>
+
+                    <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
+                        <label for="quantity">数量</label>
+                        <input type="number" value="{{$item->quantity}}" class="lg:ml-2 w-full md:w-3/4 lg:w-24 bg-gray-200" disabled>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <p class="text-red-600 text-lg">※削除済みの商品です</p>
+                </div>
+
+                @endif
+
                 @error('product_name')
                 <p class="error">{{$message}}</p>
                 @enderror
@@ -107,12 +138,14 @@
                 <table class="logs m-auto my-10 block overflow-x-scroll whitespace-nowrap">
                     <tr>
                         <th>更新者</th>
-                        <th>変更後の内容</th>
+                        <th>操作</th>
+                        <th>変更後の内容（削除の場合、削除時の内容）</th>
                         <th>更新日時</th>
                     </tr>
                     @foreach($logs as $log)
                     <tr>
                         <td>{{$log->users->name}}</td>
+                        <td>@if($log->action == 0)新規追加 @elseif($log->action == 1)更新 @else 削除 @endif</td>
                         <td>仕入先 => {{$log->makers->name}}, 商品名 => {{$log->product_name}}, 価格 => {{$log->price}}, 数量 => {{$log->quantity}}</td>
                         <td>{{$log->updated_at}}</td>
                     </tr>

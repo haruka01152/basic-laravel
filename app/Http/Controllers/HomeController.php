@@ -15,7 +15,7 @@ class HomeController extends Controller
     //
     public function log(Request $request)
     {
-        $makers = Maker::all();
+        $products = Product::pluck('id')->toArray();
         $users = User::all();
 
         $logs = Log::orderBy('updated_at', 'desc')->where(function ($query) {
@@ -29,7 +29,7 @@ class HomeController extends Controller
             return redirect()->route('log');
         }
 
-        return view('log', compact('users', 'logs'));
+        return view('log', compact('products', 'users', 'logs'));
     }
 
     public function csv()
@@ -40,7 +40,7 @@ class HomeController extends Controller
     public function download(Request $request)
     {
         $makers = Maker::all();
-        $products = Product::orderBy('maker_id', 'asc')->get();
+        $products = Product::orderBy('maker_id', 'asc')->where('status', 0)->get();
 
         $csvList = [['仕入先', '商品名', '価格', '数量']];
 
