@@ -67,14 +67,6 @@
 
                         <input type="submit" value="検索" class="py-2 px-3 md:ml-5 border border-gray-400 mt-3 ml-0 md:mt-0">
                     </form>
-
-                    <div class="mt-10 lg:mt-0 lg:ml-auto">
-                    <tr>
-                        <td></td>
-                    </tr>
-
-                        <a href="{{route('index')}}" class="ml-3 cursor-pointer text-sm border border-gray-500 inline-block py-1 px-2">条件リセット</a>
-                    </div>
                 </div>
             </div>
 
@@ -95,7 +87,7 @@
                         <td><a class="td-link" href="{{route('admin.edit', ['id' => $user->id])}}">{{$user->id}}</a></td>
                         <td><a class="td-link" href="{{route('admin.edit', ['id' => $user->id])}}">{{$user->name}}</a></td>
                         <td><a class="td-link" href="{{route('admin.edit', ['id' => $user->id])}}">{{$user->email}}</a></td>
-                        <td><a class="td-link" href="{{route('admin.edit', ['id' => $user->id])}}">@if($user->authority == 0)管理者 @elseif($user->authority == 1)編集者 @else 閲覧者 @endif</a></td>
+                        <td><a class="td-link" href="{{route('admin.edit', ['id' => $user->id])}}">{{$user->authorities->name}}</a></td>
                         <td><a class="td-link" href="{{route('admin.edit', ['id' => $user->id])}}">{{$user->created_at}}</a></td>
                         <td><a class="td-link" href="{{route('admin.edit', ['id' => $user->id])}}">{{$user->updated_at}}</a></td>
                     </tr>

@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VerifyAdminUser
 {
@@ -17,9 +18,9 @@ class VerifyAdminUser
     public function handle($request, Closure $next, $guard = null)
     {
         /** @var User $user */
-        $user = $request->user();
+        $user = Auth::user();
 
-        if (!$user->authority == 1) {
+        if ($user->authority !== 1) {
             return response(view('admin-error'));
         }
 

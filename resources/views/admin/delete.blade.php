@@ -33,10 +33,10 @@
 </style>
 
 <x-app-layout>
-    @section('title', 'ユーザー情報編集')
+    @section('title', 'ユーザー削除')
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Admin　/　Edit
+            Admin　/　Delete
         </h2>
     </x-slot>
     <x-mainmenu></x-mainmenu>
@@ -49,52 +49,34 @@
                 <form action="" method="post" class="text-center">
                     @csrf
 
+                    <p>このユーザーを削除してよろしいですか？</p>
                     <div class="py-16 flex flex-col lg:flex-row justify-center">
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
                             <label for="name">ユーザー名</label>
-                            <input type="text" name="name" value="{{$user->name}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-auto">
+                            <input type="text" name="name" value="{{$user->name}}" readonly>
                         </div>
 
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
                             <label for="email">メールアドレス</label>
-                            <input type="text" name="email" value="{{$user->email}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-auto">
+                            <input type="text" name="email" value="{{$user->email}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-auto" readonly>
                         </div>
 
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
                             <label for="authority">権限設定</label>
-                            <select name="authority" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-auto">
-                            @foreach($authorities as $authority)
-                            <option value="{{$authority->id}}" @if($user->authority === $authority->id)selected @endif>{{$authority->name}}</option>
-                            @endforeach
+                            <select name="authority">
+                            <option value="{{$authority->id}}">{{$authority->name}}</option>
                             </select>
                         </div>
 
                     </div>
 
-                    <input type="submit" value="更新" class="cursor-pointer text-lg text-white bg-red-400 inline-block w-2/4 lg:w-24 h-12 lg:h-10 rounded-lg shadow-md">
+                    <input type="submit" value="削除する" class="cursor-pointer text-lg text-white bg-red-600 inline-block w-2/4 lg:w-24 h-12 lg:h-10 rounded-lg shadow-md">
                 </form>
-
-                <div class="text-right mt-10 lg:mt-0">
-                    <a href="{{route('admin.delete', ['id' => $user->id])}}" class="text-red-500 border-b border-red-500">×　このユーザーを削除する</a>
-                </div>
-
-                @error('name')
-                <p class="error">{{$message}}</p>
-                @enderror
-
-                @error('email')
-                <p class="error">{{$message}}</p>
-                @enderror
-
-                @error('authority')
-                <p class="error">{{$message}}</p>
-                @enderror
-
             </div>
 
-            <div class="mt-10 text-center">
-                <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{route('admin')}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　一覧へ戻る</a>
-            </div>
+        <div class="text-center mt-10">
+            <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{route('admin.edit', ['id' => $user->id])}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　戻る</a>
+        </div>
         </div>
     </div>
 </x-app-layout>

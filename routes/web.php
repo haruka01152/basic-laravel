@@ -37,10 +37,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     Route::get('mypage', 'HomeController@mypage')->name('mypage');
 
-    Route::group(['middleware' => 'administrator'], function(){
-        Route::get('admin-dashboard', 'AdminController@index')->name('admin.dashboard');
+    Route::group(['middleware' => 'administrator', 'prefix' => 'admin'], function(){
+        Route::get('/', 'AdminController@index')->name('admin');
 
-        Route::get('admin-edit', 'AdminController@edit')->name('admin.edit');
+        Route::get('edit', 'AdminController@edit')->name('admin.edit');
+        Route::post('edit', 'AdminController@update');
+
+        Route::get('delete', 'AdminController@delete')->name('admin.delete');
+        Route::post('delete', 'AdminController@destroy');
     });
 });
 

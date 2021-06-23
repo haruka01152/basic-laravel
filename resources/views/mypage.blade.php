@@ -39,7 +39,7 @@
                             こちらは管理者専用画面です。ユーザー管理について何かございましたら、管理者へお問い合わせください。
                         </div>
                         <div class="text-right mt-5">
-                            <a href="{{route('admin.dashboard')}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">管理画面へ</a>
+                            <a href="{{route('admin')}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">管理画面へ</a>
                         </div>
                     </x-slot>
                 </x-jet-action-section>
