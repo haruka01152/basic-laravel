@@ -68,7 +68,7 @@
 
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
                             <label for="quantity">数量</label>
-                            <input type="number" name="quantity" value="{{$item->quantity}}" class="lg:ml-2 w-full md:w-3/4 lg:w-24 cursor-not-allowed">
+                            <input type="number" name="quantity" value="{{$item->quantity}}" class="lg:ml-2 w-full md:w-3/4 lg:w-24 cursor-not-allowed" readonly>
                         </div>
                     </div>
 
