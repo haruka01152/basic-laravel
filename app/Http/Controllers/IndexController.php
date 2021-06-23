@@ -16,7 +16,7 @@ class IndexController extends Controller
     {
         $makers = Maker::all();
 
-        $items = Product::where(function ($query) {
+        $items = Product::where('status', 0)->where(function ($query) {
             if ($maker = request('maker')) {
                 $query->where('maker_id', $maker);
             }
@@ -135,7 +135,7 @@ class IndexController extends Controller
             'quantity' => $request->quantity,
             'action' => 2,
         ]);
-        Product::destroy($id);
+        Product::where('id', $id)->update(['status' => 1]);
         return view('index.destroy');
     }
 }

@@ -53,7 +53,7 @@
                     <div class="py-16 flex flex-col lg:flex-row justify-center">
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
                             <label for="maker">仕入先</label>
-                            <input type="text" name="maker" value="{{$maker->name}}" class="w-full md:w-3/4 lg:w-auto lg:ml-2 lg:mr-7 cursor-not-allowed" readonly>
+                            <input type="text" name="maker" value="{{$maker->id}}" class="w-full md:w-3/4 lg:w-auto lg:ml-2 lg:mr-7 cursor-not-allowed" readonly>
                         </div>
 
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
@@ -75,6 +75,10 @@
                     <input type="submit" value="削除する" class="cursor-pointer text-lg text-white bg-red-600 inline-block w-2/4 lg:w-24 h-12 lg:h-10 rounded-lg shadow-md">
                 </form>
             </div>
+
+        <div class="text-center mt-10">
+            <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{route('index.edit', ['id' => $item->id])}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　戻る</a>
+        </div>
         </div>
     </div>
 </x-app-layout>

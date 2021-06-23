@@ -82,7 +82,7 @@
                     <input type="submit" value="更新" class="cursor-pointer text-lg text-white bg-red-400 inline-block w-2/4 lg:w-24 h-12 lg:h-10 rounded-lg shadow-md">
                 </form>
 
-                <div class="text-right">
+                <div class="text-right mt-10 lg:mt-0">
                     <a href="{{route('index.delete', ['id' => $item->id])}}" class="text-red-500 border-b border-red-500">×　この商品を削除する</a>
                 </div>
 
