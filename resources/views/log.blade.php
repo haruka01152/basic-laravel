@@ -63,6 +63,8 @@
                     </select>
 
                     <input type="submit" value="検索" class="py-2 px-3 md:ml-5 border border-gray-400 mt-3 ml-0 md:mt-0">
+
+                    <p class="text-red-600 pt-5 md:pl-10 md:pt-0">※商品が削除済みの場合、編集画面への遷移はできません</p>
                 </form>
                 @if(count($logs) > 0)
                 <table class="logs m-auto my-10 block overflow-x-scroll whitespace-nowrap">
@@ -74,6 +76,8 @@
                         <th>更新日時</th>
                     </tr>
                     @foreach($logs as $log)
+
+                    <!-- ログの商品が今も存在していれば、edit画面へのリンク行としてテーブルに表示 -->
                     @if(in_array($log->product_id, $products))
                     <tr>
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $log->product_id])}}">{{$log->product_id}}</a></td>
@@ -83,9 +87,9 @@
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $log->product_id])}}">{{$log->updated_at}}</a></td>
                     </tr>
                     @else
-                    <tr class="hover:bg-white cursor-not-allowed">
+                    <tr class="bg-gray-300 hover:bg-gray-300 cursor-not-allowed">
                         <td><a class="td-link">{{$log->product_id}}</a></td>
-                        <td><a class="td-link">削除</a></td>
+                        <td><a class="td-link">@if($log->action == 0)新規追加 @elseif($log->action == 1)更新 @else 削除 @endif</a></td>
                         <td><a class="td-link">仕入先 => {{$log->makers->name}}, 商品名 => {{$log->product_name}}, 価格 => {{$log->price}}, 数量 => {{$log->quantity}}</a></td>
                         <td><a class="td-link">{{$log->users->name}}</a></td>
                         <td><a class="td-link">{{$log->updated_at}}</a></td>
