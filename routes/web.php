@@ -36,5 +36,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('download', 'HomeController@download')->name('download');
 
     Route::get('mypage', 'HomeController@mypage')->name('mypage');
+
+    Route::group(['middleware' => 'administrator'], function(){
+        Route::get('admin-dashboard', 'AdminController@index')->name('admin.dashboard');
+    });
 });
 
