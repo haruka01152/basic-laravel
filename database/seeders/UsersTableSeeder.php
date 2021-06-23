@@ -21,23 +21,23 @@ class UsersTableSeeder extends Seeder
                 'name' => 'haruka',
                 'email' => 'haruka.0115maple@yahoo.ne.jp',
                 'password' => Hash::make('hamutarou115'),
-                'authority' => 0,
+                'authority' => 1,
             ],
             [
                 'name' => 'hoge1',
                 'email' => 'hoge1@hoge.com',
                 'password' => Hash::make('password'),
-                'authority' => 0,
+                'authority' =>1,
             ], [
                 'name' => 'hoge2',
                 'email' => 'hoge2@hoge.com',
                 'password' => Hash::make('password'),
-                'authority' => 1,
+                'authority' => 2,
             ], [
                 'name' => 'hoge3',
                 'email' => 'hoge3@hoge.com',
                 'password' => Hash::make('password'),
-                'authority' => 2,
+                'authority' => 3,
             ],
         ]);
     }

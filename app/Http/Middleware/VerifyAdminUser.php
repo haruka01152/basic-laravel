@@ -19,7 +19,7 @@ class VerifyAdminUser
         /** @var User $user */
         $user = $request->user();
 
-        if (!$user->authority == 0) {
+        if (!$user->authority == 1) {
             return response(view('admin-error'));
         }
 

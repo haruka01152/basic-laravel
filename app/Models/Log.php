@@ -33,4 +33,9 @@ class Log extends Model
     {
         return $this->belongsTo('App\Models\Maker', 'maker', 'id');
     }
+
+    public function actions()
+    {
+        return $this->belongsTo('App\Models\Action', 'action', 'id');
+    }
 }

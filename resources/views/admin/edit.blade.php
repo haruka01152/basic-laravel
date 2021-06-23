@@ -33,10 +33,10 @@
 </style>
 
 <x-app-layout>
-    @section('title', '在庫リスト閲覧・編集')
+    @section('title', 'ユーザー情報編集')
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Stock List　/　Edit
+            Admin　/　Edit
         </h2>
     </x-slot>
     <x-mainmenu></x-mainmenu>
@@ -44,33 +44,28 @@
     <div class="py-12 px-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white p-10 overflow-hidden shadow-xl sm:rounded-lg">
-                <h3 class="text-lg">Product Number :　{{$item->id}}</h3>
+                <h3 class="text-lg">ID :　{{$user->id}}</h3>
 
                 <form action="" method="post" class="text-center">
                     @csrf
 
                     <div class="py-16 flex flex-col lg:flex-row justify-center">
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
-                            <label for="maker">仕入先</label>
-                            <select name="maker" class="w-full md:w-3/4 lg:w-auto lg:ml-2 lg:mr-7">
-                                @foreach($makers as $maker)
-                                @if($maker->name === $item->makers->name)
-                                <option value="{{$maker->id}}" selected>{{$maker->name}}</option>
-                                @else
-                                <option value="{{$maker->id}}">{{$maker->name}}</option>
-                                @endif
-                                @endforeach
+                            <label for="name">ユーザー名</label>
+                            <input type="text" name="name" value="{{$user->name}}">
+                        </div>
+
+                        <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
+                            <label for="email">メールアドレス</label>
+                            <input type="text" name="email" value="{{$user->email}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-auto">
+                        </div>
+
+                        <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
+                            <label for="authority">権限設定</label>
+                            <select name="authority">
+                            <option value="2">閲覧者</option>
+                            <option value=""></option>
                             </select>
-                        </div>
-
-                        <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
-                            <label for="product_name">商品名</label>
-                            <input type="text" name="product_name" value="{{$item->name}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-auto">
-                        </div>
-
-                        <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
-                            <label for="price">価格</label>
-                            <input type="number" name="price" value="{{$item->price}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-36">
                         </div>
 
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">

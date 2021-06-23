@@ -39,6 +39,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     Route::group(['middleware' => 'administrator'], function(){
         Route::get('admin-dashboard', 'AdminController@index')->name('admin.dashboard');
+
+        Route::get('admin-edit', 'AdminController@edit')->name('admin.edit');
     });
 });
 

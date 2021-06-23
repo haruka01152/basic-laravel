@@ -24,13 +24,6 @@
             <x-jet-section-border />
             @endif
 
-            @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
-            <div class="mt-10 sm:mt-0">
-                @livewire('profile.delete-user-form')
-            </div>
-            @endif
-
-            <x-jet-section-border />
             <div class="mt-10 sm:mt-0">
                 <x-jet-action-section>
                     <x-slot name="title">
