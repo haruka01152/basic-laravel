@@ -40,7 +40,7 @@ class HomeController extends Controller
     public function download(Request $request)
     {
         $makers = Maker::all();
-        $products = Product::orderBy('maker_id', 'asc')->where('status', 0)->get();
+        $products = Product::orderBy('maker_id', 'asc')->get();
 
         $csvList = [['仕入先', '商品名', '価格', '数量']];
 

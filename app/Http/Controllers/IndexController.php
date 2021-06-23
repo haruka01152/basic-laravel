@@ -16,7 +16,7 @@ class IndexController extends Controller
     {
         $makers = Maker::all();
 
-        $items = Product::where('status', 0)->where(function ($query) {
+        $items = Product::where(function ($query) {
             if ($maker = request('maker')) {
                 $query->where('maker_id', $maker);
             }
