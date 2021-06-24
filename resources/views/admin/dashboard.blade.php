@@ -53,7 +53,7 @@
 
             <div class="mb-10 bg-white py-10 px-5 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="flex flex-col justify-start lg:flex-row items-start lg:items-center">
-                    <a href="{{route('index.add')}}" class="cursor-pointer text-lg text-white bg-red-400 inline-block py-2 px-4 rounded-lg shadow-md">新規作成</a>
+                    <a href="{{route('admin.add')}}" class="cursor-pointer text-lg text-white bg-red-400 inline-block py-2 px-4 rounded-lg shadow-md">新規作成</a>
 
                     <form class="mb-0 mt-8 lg:mt-0 lg:ml-10 flex lg:items-center flex-col md:flex-row w-full lg:w-auto">
 

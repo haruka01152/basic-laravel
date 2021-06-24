@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
-
     Route::get('/', 'Controller@home')->name('home');
 
     Route::prefix('index')->group(function(){
@@ -40,11 +39,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::group(['middleware' => 'administrator', 'prefix' => 'admin'], function(){
         Route::get('/', 'AdminController@index')->name('admin');
 
+        Route::get('add', 'AdminController@add')->name('admin.add');
+        Route::post('add', 'AdminController@create');
+
         Route::get('edit', 'AdminController@edit')->name('admin.edit');
         Route::post('edit', 'AdminController@update');
 
         Route::get('delete', 'AdminController@delete')->name('admin.delete');
         Route::post('delete', 'AdminController@destroy');
     });
+
 });
 

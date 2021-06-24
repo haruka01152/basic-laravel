@@ -15,6 +15,22 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('users'));
     }
 
+    public function add()
+    {
+        $authorities = Authority::all();
+        return view('admin.add', compact('authorities'));
+    }
+
+    public function create(Request $request)
+    {
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'authority' => $request->authority,
+        ]);
+        return view('admin.create');
+    }
+
     public function edit(Request $request)
     {
         $id = $request->id;

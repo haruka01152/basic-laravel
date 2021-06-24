@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserAuthorityToUsersTable extends Migration
+class AddFirstPasschangeToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class AddUserAuthorityToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->integer('authority')->default(3);
+            $table->integer('first_passchange')->default(0);
         });
     }
 
@@ -28,7 +28,7 @@ class AddUserAuthorityToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->dropColumn('authority');
+            $table->dropColumn('first_passchange');
         });
     }
 }

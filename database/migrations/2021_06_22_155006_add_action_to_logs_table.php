@@ -15,7 +15,7 @@ class AddActionToLogsTable extends Migration
     {
         Schema::table('logs', function (Blueprint $table) {
             //
-            $table->integer('action')->default(0);
+            $table->integer('action');
         });
     }
 

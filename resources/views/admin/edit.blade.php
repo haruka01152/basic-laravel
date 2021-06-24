@@ -52,12 +52,12 @@
                     <div class="py-16 flex flex-col lg:flex-row justify-center">
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
                             <label for="name">ユーザー名</label>
-                            <input type="text" name="name" value="{{$user->name}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-auto">
+                            <input type="text" name="name" value="{{$user->name}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-44">
                         </div>
 
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
                             <label for="email">メールアドレス</label>
-                            <input type="text" name="email" value="{{$user->email}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-auto">
+                            <input type="text" name="email" value="{{$user->email}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-72">
                         </div>
 
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
