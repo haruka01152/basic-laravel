@@ -59,10 +59,13 @@
 
                         @csrf
                         <i class="fas fa-search fa-lg mr-2 mt-0 md:mt-4 lg:mt-0"></i>
-                        <input type="text" name="find" value="{{request('find')}}" placeholder="商品名を検索" class="mt-3 md:mt-0">
+                        <input type="text" name="email" value="{{request('email')}}" placeholder="メールアドレスを検索" class="mt-3 md:mt-0">
 
-                        <select name="maker" class="mt-3 md:ml-5 md:mt-0">
+                        <select name="authority" class="mt-3 md:ml-5 md:mt-0">
                             <option value="">選択してください</option>
+                            @foreach($authorities as $authority)
+                            <option value="{{$authority->id}}">{{$authority->name}}</option>
+                            @endforeach
                         </select>
 
                         <input type="submit" value="検索" class="py-2 px-3 md:ml-5 border border-gray-400 mt-3 ml-0 md:mt-0">

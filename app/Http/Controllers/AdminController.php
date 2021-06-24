@@ -11,8 +11,24 @@ class AdminController extends Controller
     //
     public function index()
     {
-        $users = User::paginate(10);
-        return view('admin.dashboard', compact('users'));
+        $authorities = Authority::all();
+
+        $users = User::where(function ($query) {
+            if ($authority = request('authority')) {
+                $query->where('authority', $authority);
+            }
+
+            if ($email = request('email')) {
+                $query->where('email', 'LIKE', "%{$email}%");
+            }
+        })->sortable()->paginate(10);
+
+        // 何も入力せず検索したら最初のadminURLにリダイレクト
+        if(isset($request['email']) && $request['email'] == '' && $request['authority'] == ''){
+            return redirect()->route('admin');
+        }
+
+        return view('admin.dashboard', compact('authorities', 'users'));
     }
 
     public function add()
