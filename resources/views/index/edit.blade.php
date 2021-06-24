@@ -122,7 +122,7 @@
                 </table>
 
                 <div class="mt-5 md:mt-0">
-                    {{$logs->appends($params)->links()}}
+                    {{$logs->links()}}
                 </div>
                 @else
 

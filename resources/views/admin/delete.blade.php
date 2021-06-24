@@ -49,23 +49,21 @@
                 <form action="" method="post" class="text-center">
                     @csrf
 
-                    <p>このユーザーを削除してよろしいですか？</p>
+                    <p class="pt-10">このユーザーを削除してよろしいですか？</p>
                     <div class="py-16 flex flex-col lg:flex-row justify-center">
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
                             <label for="name">ユーザー名</label>
-                            <input type="text" name="name" value="{{$user->name}}" readonly>
+                            <input type="text" name="name" value="{{$user->name}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-44 cursor-not-allowed" readonly>
                         </div>
 
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
                             <label for="email">メールアドレス</label>
-                            <input type="text" name="email" value="{{$user->email}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-auto" readonly>
+                            <input type="text" name="email" value="{{$user->email}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-72 cursor-not-allowed" readonly>
                         </div>
 
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
                             <label for="authority">権限設定</label>
-                            <select name="authority">
-                            <option value="{{$authority->id}}">{{$authority->name}}</option>
-                            </select>
+                            <input type="text" name="authority" value="{{$user->authorities->name}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-auto cursor-not-allowed" readonly>
                         </div>
 
                     </div>

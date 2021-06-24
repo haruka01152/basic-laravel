@@ -86,10 +86,6 @@
                 <p class="error">{{$message}}</p>
                 @enderror
 
-                @error('authority')
-                <p class="error">{{$message}}</p>
-                @enderror
-
             </div>
 
             <div class="mt-10 text-center">

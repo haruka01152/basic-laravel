@@ -62,20 +62,16 @@ class IndexController extends Controller
         return view('index.create', compact('latest'));
     }
 
-    public function edit(Request $request)
+    public function edit(Request $request, $id)
     {
-        $id = $request['id'];
         $item = Product::findOrFail($request->id);
         $makers = Maker::all();
-        $logs = Log::where('product_id', $request->id)->orderBy('updated_at', 'desc')->paginate(10);
-        $data['params'] = ['id' => $id];
-        return view('index.edit', compact('item', 'makers', 'logs'), $data);
+        $logs = Log::where('product_id', $request->id)->orderBy('updated_at', 'desc')->paginate(3);
+        return view('index.edit', compact('item', 'makers', 'logs'));
     }
 
-    public function update(IndexRequest $request)
+    public function update(IndexRequest $request, $id)
     {
-        $id = $request->id;
-
         // 商品リストを更新
         Product::where('id', $id)->update(['maker_id' => $request->maker, 'name' => $request->product_name, 'price' => $request->price, 'quantity' => $request->quantity, 'last_editor' => Auth::id()]);
 
@@ -115,17 +111,15 @@ class IndexController extends Controller
         }
     }
 
-    public function delete(Request $request)
+    public function delete(Request $request, $id)
     {
-        $id = $request->id;
         $item = Product::findOrFail($request->id);
         $maker = Maker::findOrFail($item->makers->id);
         return view('index.delete', compact('item', 'maker'));
     }
 
-    public function destroy(Request $request)
+    public function destroy(Request $request, $id)
     {
-        $id = $request->id;
         Log::create([
             'product_id' => $id,
             'editor' => Auth::id(),

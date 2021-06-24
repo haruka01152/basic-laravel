@@ -23,12 +23,12 @@
                     <div class="py-16 flex flex-col lg:flex-row justify-center">
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
                             <label for="name">ユーザー名</label>
-                            <input type="text" name="name" value="" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-auto">
+                            <input type="text" name="name" value="{{old('name')}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-44">
                         </div>
 
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
                             <label for="email">メールアドレス</label>
-                            <input type="text" name="email" value="" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-auto">
+                            <input type="text" name="email" value="{{old('email')}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-72">
                         </div>
 
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
@@ -45,22 +45,18 @@
                     <input type="submit" value="作成" class="cursor-pointer text-lg text-white bg-red-400 inline-block w-2/4 lg:w-24 h-12 lg:h-10 rounded-lg shadow-md">
                 </form>
 
-                @error('product_name')
+                @error('name')
                 <p class="error">{{$message}}</p>
                 @enderror
 
-                @error('price')
-                <p class="error">{{$message}}</p>
-                @enderror
-
-                @error('quantity')
+                @error('email')
                 <p class="error">{{$message}}</p>
                 @enderror
 
             </div>
 
             <div class="mt-10 text-center">
-                <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{route('index')}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　一覧へ戻る</a>
+                <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{route('admin')}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　一覧へ戻る</a>
             </div>
         </div>
     </div>

@@ -29,11 +29,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             Route::get('add', 'IndexController@add')->name('index.add');
             Route::post('add', 'IndexController@create');
 
-            Route::get('edit', 'IndexController@edit')->name('index.edit');
-            Route::post('edit', 'IndexController@update');
+            Route::get('edit/{id}', 'IndexController@edit')->name('index.edit');
+            Route::post('edit/{id}', 'IndexController@update');
 
-            Route::get('delete', 'IndexController@delete')->name('index.delete');
-            Route::post('delete', 'IndexController@destroy');
+            Route::get('delete/{id}', 'IndexController@delete')->name('index.delete');
+            Route::post('delete/{id}', 'IndexController@destroy');
         });
 
         Route::get('log', 'HomeController@log')->name('log');
@@ -50,11 +50,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             Route::get('add', 'AdminController@add')->name('admin.add');
             Route::post('add', 'AdminController@create');
 
-            Route::get('edit', 'AdminController@edit')->name('admin.edit');
-            Route::post('edit', 'AdminController@update');
+            Route::get('edit/{id}', 'AdminController@edit')->name('admin.edit');
+            Route::post('edit/{id}', 'AdminController@update');
 
-            Route::get('delete', 'AdminController@delete')->name('admin.delete');
-            Route::post('delete', 'AdminController@destroy');
+            Route::get('delete/{id}', 'AdminController@delete')->name('admin.delete');
+            Route::post('delete/{id}', 'AdminController@destroy');
         });
     });
 });
