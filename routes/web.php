@@ -13,41 +13,48 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function(){
-    Route::get('/', 'Controller@home')->name('home');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    // 初回ログイン時パスワード変更を要求する
+    Route::get('/password-change', 'Controller@passchange')->name('passchange');
+    Route::post('password-change', 'Controller@passchange_done')->name('passchange_done');
 
-    Route::prefix('index')->group(function(){
-        Route::get('/', 'IndexController@index')->name('index');
+    // 最初のパスワード変更後アクセス可能
+    Route::middleware(['passchange'])->group(function () {
+        Route::get('/', 'Controller@home')->name('home');
 
-        Route::get('add', 'IndexController@add')->name('index.add');
-        Route::post('add', 'IndexController@create');
+        // Index下の処理
+        Route::prefix('index')->group(function () {
+            Route::get('/', 'IndexController@index')->name('index');
 
-        Route::get('edit', 'IndexController@edit')->name('index.edit');
-        Route::post('edit', 'IndexController@update');
+            Route::get('add', 'IndexController@add')->name('index.add');
+            Route::post('add', 'IndexController@create');
 
-        Route::get('delete', 'IndexController@delete')->name('index.delete');
-        Route::post('delete', 'IndexController@destroy');
+            Route::get('edit', 'IndexController@edit')->name('index.edit');
+            Route::post('edit', 'IndexController@update');
+
+            Route::get('delete', 'IndexController@delete')->name('index.delete');
+            Route::post('delete', 'IndexController@destroy');
+        });
+
+        Route::get('log', 'HomeController@log')->name('log');
+
+        Route::get('csv', 'HomeController@csv')->name('csv');
+        Route::get('download', 'HomeController@download')->name('download');
+
+        Route::get('mypage', 'HomeController@mypage')->name('mypage');
+
+        // 管理画面へのアクセス
+        Route::group(['middleware' => 'administrator', 'prefix' => 'admin'], function () {
+            Route::get('/', 'AdminController@index')->name('admin');
+
+            Route::get('add', 'AdminController@add')->name('admin.add');
+            Route::post('add', 'AdminController@create');
+
+            Route::get('edit', 'AdminController@edit')->name('admin.edit');
+            Route::post('edit', 'AdminController@update');
+
+            Route::get('delete', 'AdminController@delete')->name('admin.delete');
+            Route::post('delete', 'AdminController@destroy');
+        });
     });
-
-    Route::get('log', 'HomeController@log')->name('log');
-
-    Route::get('csv', 'HomeController@csv')->name('csv');
-    Route::get('download', 'HomeController@download')->name('download');
-
-    Route::get('mypage', 'HomeController@mypage')->name('mypage');
-
-    Route::group(['middleware' => 'administrator', 'prefix' => 'admin'], function(){
-        Route::get('/', 'AdminController@index')->name('admin');
-
-        Route::get('add', 'AdminController@add')->name('admin.add');
-        Route::post('add', 'AdminController@create');
-
-        Route::get('edit', 'AdminController@edit')->name('admin.edit');
-        Route::post('edit', 'AdminController@update');
-
-        Route::get('delete', 'AdminController@delete')->name('admin.delete');
-        Route::post('delete', 'AdminController@destroy');
-    });
-
 });
-
