@@ -18,11 +18,11 @@ class HomeController extends Controller
         $products = Product::pluck('id')->toArray();
         $users = User::all();
 
-        $logs = Log::orderBy('updated_at', 'desc')->where(function ($query) {
+        $logs = Log::where(function ($query) {
             if ($user = request('user')) {
                 $query->where('editor', $user);
             }
-        })->paginate(30);
+        })->orderBy('updated_at', 'desc')->paginate(30);
 
         // 何も入力せず検索したら最初のログ画面にリダイレクト
         if (isset($request['user']) && $request['user'] == '') {
@@ -39,7 +39,7 @@ class HomeController extends Controller
 
     public function download(Request $request)
     {
-        $suppliers = supplier::all();
+        $suppliers = Supplier::all();
         $products = Product::orderBy('supplier_id', 'asc')->get();
 
         $csvList = [['仕入先', '商品名', '価格', '数量']];

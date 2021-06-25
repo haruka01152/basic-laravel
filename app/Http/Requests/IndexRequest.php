@@ -25,7 +25,7 @@ class IndexRequest extends FormRequest
     {
         return [
             //
-            'product_name' => 'required|max:30',
+            'product_name' => 'required|max:30|unique:products,name',
             'price' => 'numeric|min:1|max:1000000|nullable',
             'quantity' => 'required|numeric|min:0|max:200',
         ];

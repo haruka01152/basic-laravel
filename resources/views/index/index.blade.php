@@ -55,7 +55,7 @@
                 <div class="flex flex-col justify-start lg:flex-row items-start lg:items-center mb-5 lg:mb-10 lg:ml-7">
                     <a href="{{route('index.add')}}" class="cursor-pointer text-lg text-white bg-red-400 inline-block py-2 px-4 rounded-lg shadow-md mb-5 lg:mb-0">商品を追加</a>
 
-                    <a href="{{route('index.add')}}" class="cursor-pointer text-lg text-white bg-red-400 inline-block py-2 px-4 rounded-lg shadow-md lg:ml-5">仕入先の追加・編集</a>
+                    <a href="{{route('supplier.index')}}" class="cursor-pointer text-lg text-white bg-red-400 inline-block py-2 px-4 rounded-lg shadow-md lg:ml-7">仕入先の追加・編集</a>
                 </div>
 
                 <div class="lg:flex">
@@ -68,7 +68,7 @@
                         <select name="supplier" class="mt-3 md:ml-5 md:mt-0">
                             <option value="">選択してください</option>
                             @foreach($suppliers as $supplier)
-                            <option value="{{$supplier->id}}" @if(request()->supplier == $supplier->id)selected @endif>{{$supplier->name}}</option>
+                            <option value="{{$supplier->id}}" @if(request('supplier') == $supplier->id)selected @endif>{{$supplier->name}}</option>
                             @endforeach
                         </select>
 
@@ -80,7 +80,7 @@
                             <td>@sortablelink('updated_at', '更新順に並べる')</td>
                         </tr>
 
-                        <a href="{{route('index')}}" class="ml-3 cursor-pointer text-sm border border-gray-500 inline-block py-1 px-2">条件リセット</a>
+                        <a href="{{route('index')}}" class="ml-5 cursor-pointer text-sm border border-gray-500 inline-block py-1 px-2">条件リセット</a>
                     </div>
                 </div>
 

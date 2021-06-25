@@ -37,7 +37,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
             // 仕入先編集処理
             Route::prefix('supplier')->group(function(){
-                Route::get('index', 'supplierController@index')->name('supplier.index');
+                Route::get('/', 'supplierController@index')->name('supplier.index');
                 
                 Route::get('add', 'supplierController@add')->name('supplier.add');
                 Route::post('add', 'supplierController@create');
@@ -46,7 +46,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
                 Route::post('edit/{id}', 'supplierController@update');
 
                 Route::get('delete/{id}', 'supplierController@delete')->name('supplier.delete');
-                Route::post('delete', 'supplierController@destroy');
+                Route::post('delete/{id}', 'supplierController@destroy');
             });
         });
 

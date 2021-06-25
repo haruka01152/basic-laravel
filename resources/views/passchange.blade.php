@@ -8,7 +8,8 @@
 
     <div class="py-12 px-3">
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-            <p class="text-red-600 pb-10">初回ログインです。パスワードを変更してください。</p>
+            <p class="pb-10">{{$userName}}さん、初回ログインありがとうございます。<br>
+            安全のため、パスワードを変更してください。</p>
 
             <form action="" method="post" class="mb-10">
                 @csrf

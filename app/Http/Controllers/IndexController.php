@@ -14,7 +14,7 @@ class IndexController extends Controller
 
     public function index(Request $request)
     {
-        $suppliers = supplier::all();
+        $suppliers = Supplier::all();
 
         $items = Product::where(function ($query) {
             if ($supplier = request('supplier')) {
@@ -24,7 +24,7 @@ class IndexController extends Controller
             if ($find = request('find')) {
                 $query->where('name', 'LIKE', "%{$find}%");
             }
-        })->sortable()->paginate(15);
+        })->sortable()->orderBy('supplier_id', 'asc')->paginate(15);
 
         // 何も入力せず検索したら最初のindexURLにリダイレクト
         if (isset($request['find']) && $request['find'] == '' && $request['supplier'] == '') {
@@ -36,7 +36,7 @@ class IndexController extends Controller
 
     public function add()
     {
-        $suppliers = supplier::all();
+        $suppliers = Supplier::all();
         return view('index.add', compact('suppliers'));
     }
 
@@ -65,8 +65,8 @@ class IndexController extends Controller
     public function edit(Request $request, $id)
     {
         $item = Product::findOrFail($request->id);
-        $suppliers = supplier::all();
-        $logs = Log::where('product_id', $request->id)->orderBy('updated_at', 'desc')->paginate(3);
+        $suppliers = Supplier::all();
+        $logs = Log::where('product_id', $request->id)->orderBy('updated_at', 'desc')->paginate(10);
         return view('index.edit', compact('item', 'suppliers', 'logs'));
     }
 
@@ -114,7 +114,7 @@ class IndexController extends Controller
     public function delete(Request $request, $id)
     {
         $item = Product::findOrFail($request->id);
-        $supplier = supplier::findOrFail($item->suppliers->id);
+        $supplier = Supplier::findOrFail($item->suppliers->id);
         return view('index.delete', compact('item', 'supplier'));
     }
 

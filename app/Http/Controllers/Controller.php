@@ -24,7 +24,8 @@ class Controller extends BaseController
 
     public function passchange()
     {
-        return view('passchange');
+        $userName = Auth::user()->name;
+        return view('passchange', compact('userName'));
     }
 
     public function passchange_done(PasswordRequest $request)

@@ -58,7 +58,7 @@
                     <select name="user" class="mt-3 md:mt-0">
                         <option value="">ユーザー別履歴を表示</option>
                         @foreach($users as $user)
-                        <option value="{{$user->id}}" @if(request()->user == $user->id)selected @endif>{{$user->name}}</option>
+                        <option value="{{$user->id}}" @if(request('user') == $user->id)selected @endif>{{$user->name}}</option>
                         @endforeach
                     </select>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\first_pass;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PasswordRequest extends FormRequest
@@ -25,7 +26,7 @@ class PasswordRequest extends FormRequest
     {
         return [
             //
-            'password' => 'required|min:6|confirmed',
+            'password' => ['required', 'min:6', 'confirmed', new first_pass],
         ];
     }
 }

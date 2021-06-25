@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\supplier;
+use App\Models\Supplier;
+use App\Models\Product;
 
 class supplierController extends Controller
 {
     //
     public function index()
     {
-        $suppliers = supplier::all();
+        $suppliers = Supplier::paginate(15);
         return view('supplier.index', compact('suppliers'));
     }
 }
