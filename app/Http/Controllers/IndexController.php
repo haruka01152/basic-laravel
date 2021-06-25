@@ -70,10 +70,26 @@ class IndexController extends Controller
         return view('index.edit', compact('item', 'suppliers', 'logs'));
     }
 
-    public function update(IndexRequest $request, $id)
+    public function update(Request $request, $id)
     {
+        // バリデーション
+        $rules = [
+            'product_name' => 'required|max:30|unique:products,name,' . $id,
+            'price' => 'numeric|min:1|max:1000000|nullable',
+            'quantity' => 'required|numeric|min:0|max:200',
+        ];
+        $this->validate($request, $rules);
+
         // 商品リストを更新
-        Product::where('id', $id)->update(['supplier_id' => $request->supplier, 'name' => $request->product_name, 'price' => $request->price, 'quantity' => $request->quantity, 'last_editor' => Auth::id()]);
+        Product::where('id', $id)->update(
+            [
+                'supplier_id' => $request->supplier,
+                'name' => $request->product_name,
+                'price' => $request->price,
+                'quantity' => $request->quantity,
+                'last_editor' => Auth::id()
+            ]
+        );
 
         // ログを作成
         $old = Log::where('product_id', $id)->orderBy('id', 'desc')->first(); //更新される前のログの内容を取得
