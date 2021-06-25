@@ -17,7 +17,7 @@ class CreateLogsTable extends Migration
             $table->id();
             $table->integer('product_id');
             $table->integer('editor');
-            $table->integer('maker');
+            $table->integer('supplier');
             $table->string('product_name');
             $table->integer('price')->default(0)->nullable();
             $table->integer('quantity');

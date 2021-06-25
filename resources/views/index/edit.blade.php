@@ -51,13 +51,13 @@
 
                     <div class="py-16 flex flex-col lg:flex-row justify-center">
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
-                            <label for="maker">仕入先</label>
-                            <select name="maker" class="w-full md:w-3/4 lg:w-auto lg:ml-2 lg:mr-7">
-                                @foreach($makers as $maker)
-                                @if($maker->name === $item->makers->name)
-                                <option value="{{$maker->id}}" selected>{{$maker->name}}</option>
+                            <label for="supplier">仕入先</label>
+                            <select name="supplier" class="w-full md:w-3/4 lg:w-auto lg:ml-2 lg:mr-7">
+                                @foreach($suppliers as $supplier)
+                                @if($supplier->name === $item->suppliers->name)
+                                <option value="{{$supplier->id}}" selected>{{$supplier->name}}</option>
                                 @else
-                                <option value="{{$maker->id}}">{{$maker->name}}</option>
+                                <option value="{{$supplier->id}}">{{$supplier->name}}</option>
                                 @endif
                                 @endforeach
                             </select>
@@ -115,7 +115,7 @@
                     <tr>
                         <td>{{$log->users->name}}</td>
                         <td>{{$log->actions->name}}</td>
-                        <td>仕入先 => {{$log->makers->name}}, 商品名 => {{$log->product_name}}, 価格 => {{$log->price}}, 数量 => {{$log->quantity}}</td>
+                        <td>仕入先 => {{$log->suppliers->name}}, 商品名 => {{$log->product_name}}, 価格 => {{$log->price}}, 数量 => {{$log->quantity}}</td>
                         <td>{{$log->updated_at}}</td>
                     </tr>
                     @endforeach

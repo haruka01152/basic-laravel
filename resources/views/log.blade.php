@@ -70,9 +70,9 @@
                 <table class="logs m-auto my-10 block overflow-x-scroll whitespace-nowrap">
                     <tr>
                         <th>商品ID</th>
+                        <th>更新者</th>
                         <th>操作</th>
                         <th>記録内容（操作が【削除】の場合、削除時の内容）</th>
-                        <th>更新者</th>
                         <th>更新日時</th>
                     </tr>
                     @foreach($logs as $log)
@@ -81,17 +81,17 @@
                     @if(in_array($log->product_id, $products))
                     <tr>
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $log->product_id])}}">{{$log->product_id}}</a></td>
-                        <td><a class="td-link" href="{{route('index.edit', ['id' => $log->product_id])}}">{{$log->actions->name}}</a></td>
-                        <td><a class="td-link" href="{{route('index.edit', ['id' => $log->product_id])}}">仕入先 => {{$log->makers->name}}, 商品名 => {{$log->product_name}}, 価格 => {{$log->price}}, 数量 => {{$log->quantity}}</a></td>
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $log->product_id])}}">{{$log->users->name}}</a></td>
+                        <td><a class="td-link" href="{{route('index.edit', ['id' => $log->product_id])}}">{{$log->actions->name}}</a></td>
+                        <td><a class="td-link" href="{{route('index.edit', ['id' => $log->product_id])}}">仕入先 => {{$log->suppliers->name}}, 商品名 => {{$log->product_name}}, 価格 => {{$log->price}}, 数量 => {{$log->quantity}}</a></td>
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $log->product_id])}}">{{$log->updated_at}}</a></td>
                     </tr>
                     @else
                     <tr class="bg-gray-300 hover:bg-gray-300 cursor-not-allowed">
                         <td><a class="td-link">{{$log->product_id}}</a></td>
-                        <td><a class="td-link">{{$log->actions->name}}</a></td>
-                        <td><a class="td-link">仕入先 => {{$log->makers->name}}, 商品名 => {{$log->product_name}}, 価格 => {{$log->price}}, 数量 => {{$log->quantity}}</a></td>
                         <td><a class="td-link">{{$log->users->name}}</a></td>
+                        <td><a class="td-link">{{$log->actions->name}}</a></td>
+                        <td><a class="td-link">仕入先 => {{$log->suppliers->name}}, 商品名 => {{$log->product_name}}, 価格 => {{$log->price}}, 数量 => {{$log->quantity}}</a></td>
                         <td><a class="td-link">{{$log->updated_at}}</a></td>
                     </tr>
                     @endif

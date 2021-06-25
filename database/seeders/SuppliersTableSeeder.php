@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class MakersTableSeeder extends Seeder
+class suppliersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class MakersTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('makers')->insert([
+        DB::table('suppliers')->insert([
             ['name' => 'NTT',
         ],
         [

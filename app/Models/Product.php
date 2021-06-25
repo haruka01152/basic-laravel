@@ -11,10 +11,10 @@ class Product extends Model
     use HasFactory;
     use Sortable;
 
-    public $sortable = ['maker_id', 'updated_at'];
+    public $sortable = ['supplier_id', 'updated_at'];
 
     protected $fillable = [
-        'maker_id',
+        'supplier_id',
         'name',
         'price',
         'quantity',
@@ -26,9 +26,9 @@ class Product extends Model
         return $this->belongsTo('App\Models\User', 'last_editor', 'id');
     }
 
-    public function makers()
+    public function suppliers()
     {
-        return $this->belongsTo('App\Models\Maker', 'maker_id', 'id');
+        return $this->belongsTo('App\Models\supplier', 'supplier_id', 'id');
     }
 
     public function logs()

@@ -39,10 +39,10 @@
 </style>
 
 <x-app-layout>
-    @section('title', '在庫リスト閲覧・編集')
+    @section('title', '仕入先追加・編集')
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Stock List
+            Supplier List
         </h2>
     </x-slot>
 

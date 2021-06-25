@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Log;
-use App\Models\Maker;
+use App\Models\supplier;
 use App\Models\Product;
 use App\Models\User;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -39,14 +39,14 @@ class HomeController extends Controller
 
     public function download(Request $request)
     {
-        $makers = Maker::all();
-        $products = Product::orderBy('maker_id', 'asc')->get();
+        $suppliers = supplier::all();
+        $products = Product::orderBy('supplier_id', 'asc')->get();
 
         $csvList = [['仕入先', '商品名', '価格', '数量']];
 
         foreach ($products as $product) :
             $csvList[] = [
-                $product->makers->name, $product->name, $product->price, $product->quantity
+                $product->suppliers->name, $product->name, $product->price, $product->quantity
             ];
         endforeach;
 

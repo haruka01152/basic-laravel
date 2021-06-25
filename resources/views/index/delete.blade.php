@@ -52,8 +52,8 @@
                     <p class="pt-10">この商品を削除してよろしいですか？</p>
                     <div class="py-16 flex flex-col lg:flex-row justify-center">
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
-                            <label for="maker">仕入先</label>
-                            <input type="text" name="maker" value="{{$maker->name}}" class="w-full md:w-3/4 lg:w-auto lg:ml-2 lg:mr-7 cursor-not-allowed" readonly>
+                            <label for="supplier">仕入先</label>
+                            <input type="text" name="supplier" value="{{$supplier->name}}" class="w-full md:w-3/4 lg:w-auto lg:ml-2 lg:mr-7 cursor-not-allowed" readonly>
                         </div>
 
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">

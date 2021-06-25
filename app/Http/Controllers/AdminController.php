@@ -10,7 +10,7 @@ use App\Http\Requests\AddUserRequest;
 class AdminController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
         $authorities = Authority::all();
 

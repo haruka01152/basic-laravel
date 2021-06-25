@@ -12,7 +12,7 @@ class Log extends Model
     protected $fillable = [
         'product_id',
         'editor',
-        'maker',
+        'supplier',
         'product_name',
         'price',
         'quantity',
@@ -29,9 +29,9 @@ class Log extends Model
         return $this->belongsTo('App\Models\User', 'editor', 'id');
     }
 
-    public function makers()
+    public function suppliers()
     {
-        return $this->belongsTo('App\Models\Maker', 'maker', 'id');
+        return $this->belongsTo('App\Models\supplier', 'supplier', 'id');
     }
 
     public function actions()

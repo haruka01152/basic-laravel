@@ -22,10 +22,10 @@
 
                     <div class="py-16 flex flex-col lg:flex-row justify-center">
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
-                            <label for="maker">仕入先</label>
-                            <select name="maker" class="w-full md:w-3/4 lg:w-auto lg:ml-2 lg:mr-7">
-                                @foreach($makers as $maker)
-                                <option value="{{$maker->id}}" {{(old('maker')== $maker->id) ? "selected" : "" }} >{{$maker->name}}</option>
+                            <label for="supplier">仕入先</label>
+                            <select name="supplier" class="w-full md:w-3/4 lg:w-auto lg:ml-2 lg:mr-7">
+                                @foreach($suppliers as $supplier)
+                                <option value="{{$supplier->id}}" {{(old('supplier')== $supplier->id) ? "selected" : "" }} >{{$supplier->name}}</option>
                                 @endforeach
                             </select>
                         </div>

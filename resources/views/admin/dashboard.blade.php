@@ -51,7 +51,7 @@
     <div class="py-12 px-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <div class="mb-10 bg-white py-10 px-5 overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="flex justify-between items-center mb-10 bg-white py-10 px-5 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="flex flex-col justify-start lg:flex-row items-start lg:items-center">
                     <a href="{{route('admin.add')}}" class="cursor-pointer text-lg text-white bg-red-400 inline-block py-2 px-4 rounded-lg shadow-md">新規作成</a>
 
@@ -64,13 +64,15 @@
                         <select name="authority" class="mt-3 md:ml-5 md:mt-0">
                             <option value="">選択してください</option>
                             @foreach($authorities as $authority)
-                            <option value="{{$authority->id}}">{{$authority->name}}</option>
+                            <option value="{{$authority->id}}" @if(request()->authority == $authority->id)selected @endif>{{$authority->name}}</option>
                             @endforeach
                         </select>
 
                         <input type="submit" value="検索" class="py-2 px-3 md:ml-5 border border-gray-400 mt-3 ml-0 md:mt-0">
                     </form>
                 </div>
+
+                <a href="{{route('admin')}}" class="ml-3 cursor-pointer text-sm border border-gray-500 inline-block py-1 px-2">条件リセット</a>
             </div>
 
             <div class="bg-white py-10 px-5 overflow-hidden shadow-xl sm:rounded-lg">
