@@ -21,7 +21,7 @@
     </a>
 
     <a href="{{route('log')}}" class="p-8 border-t border-gray-200 md:border-t-0 md:border-l lg:text-xl hover:bg-gray-200 transition ease-out duration-500">
-    変更履歴
+    商品変更履歴
     </a>
 
     <a href="{{route('csv')}}" class="p-8 border-t border-gray-200 lg:text-xl hover:bg-gray-200 transition ease-out duration-500">

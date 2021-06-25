@@ -21,4 +21,17 @@ class supplierController extends Controller
         $items = Product::where('supplier_id', $id)->paginate(10);
         return view('supplier.edit', compact('supplier', 'items'));
     }
+
+    public function update(Request $request, $id)
+    {
+        $rules = [
+            'supplier_name' => 'required|max:10|unique:suppliers,' . $id,
+        ];
+        $this->validate($request, $rules);
+
+        Supplier::where('id', $id)->update([
+            'name' => $request->supplier_name,
+        ]);
+        return view('supplier.update');
+    }
 }

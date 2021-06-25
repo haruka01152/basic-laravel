@@ -101,7 +101,7 @@
             </div>
 
             <div class="bg-white p-10 overflow-hidden shadow-xl sm:rounded-lg mt-10 ">
-                <h3 class="text-lg">変更履歴</h3>
+                <h3 class="text-lg">商品変更履歴</h3>
 
                 @if(count($logs) > 0)
                 <table class="logs m-auto my-10 block overflow-x-scroll whitespace-nowrap">
@@ -134,14 +134,7 @@
             </div>
 
             <div class="mt-10 text-center">
-                @if(url()->previous() == url('index'))
-                <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{route('index')}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　在庫リストへ戻る</a>
-                @elseif(url()->previous() == url('log'))
-                <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{route('log')}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　変更履歴へ戻る</a>
-                @else
-                <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800 lg:mr-5" href="{{route('index')}}">在庫リストへ</a>
-                <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800 lg:ml-5" href="{{route('log')}}">変更履歴へ</a>
-                @endif
+                <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{url()->previous()}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　前ページへ戻る</a>
             </div>
         </div>
     </div>

@@ -23,9 +23,21 @@
         background-color: rgba(209, 213, 219);
     }
 
-    .logs td {
-        padding: .7rem 1.5rem;
+    tr {
+        cursor: pointer;
     }
+
+    tr:hover {
+        background-color: rgba(243, 244, 246, 1);
+    }
+
+    .td-link {
+        display: inline-block;
+        padding: .7rem 1.5rem;
+        width: 100%;
+        height: 100%;
+    }
+
 
     .error {
         color: red;
@@ -109,7 +121,7 @@
             </div>
 
             <div class="mt-10 text-center">
-            <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{url()->previous()}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　戻る</a>
+            <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{route('supplier.index')}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　仕入先リストへ戻る</a>
             </div>
         </div>
     </div>

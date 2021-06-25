@@ -41,7 +41,7 @@
 </style>
 
 <x-app-layout>
-    @section('title', '変更履歴')
+    @section('title', '商品変更履歴')
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Log
