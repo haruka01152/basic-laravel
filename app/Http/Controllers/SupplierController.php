@@ -14,4 +14,11 @@ class supplierController extends Controller
         $suppliers = Supplier::paginate(15);
         return view('supplier.index', compact('suppliers'));
     }
+
+    public function edit(Request $request, $id)
+    {
+        $supplier = Supplier::findOrFail($id);
+        $items = Product::where('supplier_id', $id)->paginate(10);
+        return view('supplier.edit', compact('supplier', 'items'));
+    }
 }

@@ -1,6 +1,5 @@
 <!-- テーブルのCSS -->
 <style>
-    table,
     th,
     td {
         border: 1px solid rgba(107, 114, 128, 1);
@@ -8,9 +7,9 @@
         padding: 0;
     }
 
-    tbody {
-        width: 100%;
+    tbody{
         display: table;
+        width: 90%;
     }
 
     th {
@@ -51,17 +50,13 @@
     <div class="py-12 px-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <div class="mb-10 bg-white py-10 px-5 overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="flex flex-col justify-start lg:flex-row items-start lg:items-center mb-5 lg:mb-10 lg:ml-7">
+            <div class="mb-10 bg-white py-10 px-5 overflow-hidden shadow-xl sm:rounded-lg lg:flex justify-center">
+                <div class="flex flex-col justify-start lg:flex-row items-start">
                     <a href="{{route('supplier.add')}}" class="cursor-pointer text-lg text-white bg-red-400 inline-block py-2 px-4 rounded-lg shadow-md mb-5 lg:mb-0">仕入先を追加</a>
                 </div>
-            </div>
-
-
-            <div class="bg-white py-10 px-5 overflow-hidden shadow-xl sm:rounded-lg">
 
                 @if(count($suppliers) > 0)
-                <table class="m-auto block overflow-x-scroll whitespace-nowrap w-full">
+                <table class="flex justify-end w-4/5 inline-block">
                     <tr>
                         <th>ID</th>
                         <th>仕入先名</th>
@@ -87,10 +82,13 @@
                 </div>
 
                 @endif
+
             </div>
 
+
+
             <div class="mt-10 text-center">
-                <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{route('home')}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　ホームへ戻る</a>
+            <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{route('home')}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　ホームへ戻る</a>
             </div>
         </div>
     </div>
