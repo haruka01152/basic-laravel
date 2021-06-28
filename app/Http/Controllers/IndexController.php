@@ -64,7 +64,7 @@ class IndexController extends Controller
 
     public function edit(Request $request, $id)
     {
-        $item = Product::findOrFail($request->id);
+        $item = Product::findOrFail($id);
         $suppliers = Supplier::all();
         $logs = Log::where('product_id', $request->id)->orderBy('updated_at', 'desc')->paginate(10);
         return view('index.edit', compact('item', 'suppliers', 'logs'));

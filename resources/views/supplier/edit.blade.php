@@ -63,8 +63,8 @@
 
                     <div class="py-16 flex flex-col lg:flex-row justify-center">
                         <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
-                            <label for="supplier_name">仕入先名</label>
-                            <input type="text" name="supplier_name" value="{{$supplier->name}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-auto">
+                            <label for="name">仕入先名</label>
+                            <input type="text" name="name" value="{{$supplier->name}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-auto">
                         </div>
                     </div>
 
@@ -72,7 +72,7 @@
                 </form>
 
                 <div class="text-right mt-10 lg:mt-0">
-                    <a href="{{route('index.delete', ['id' => $supplier->id])}}" class="text-red-500 border-b border-red-500">×　この仕入先を削除する</a>
+                    <a href="{{route('supplier.delete', ['id' => request('id')])}}" class="text-red-500 border-b border-red-500">×　この仕入先を削除する</a>
                 </div>
 
                 @error('name')
