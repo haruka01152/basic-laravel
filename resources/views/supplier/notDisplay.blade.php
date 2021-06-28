@@ -1,15 +1,15 @@
 <x-app-layout>
-    @section('title', '作成完了')
+    @section('title', '表示設定変更')
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Supplier List　/　Create
+            Supplier List　/　NotDisplay
         </h2>
     </x-slot>
 
     <div class="py-12 px-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white p-10 overflow-hidden shadow-xl sm:rounded-lg text-center">
-                <h3 class="text-lg">新規作成が完了しました。</h3>
+                <h3 class="text-lg">仕入先を非表示にするよう設定しました。</h3>
             </div>
 
             <div class="mt-10 text-center">

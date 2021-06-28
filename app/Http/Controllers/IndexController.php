@@ -36,7 +36,7 @@ class IndexController extends Controller
 
     public function add()
     {
-        $suppliers = Supplier::all();
+        $suppliers = Supplier::where('display', 0)->get();
         return view('index.add', compact('suppliers'));
     }
 
@@ -65,7 +65,14 @@ class IndexController extends Controller
     public function edit(Request $request, $id)
     {
         $item = Product::findOrFail($id);
-        $suppliers = Supplier::all();
+        $this_supplier = Supplier::where('id', $item->supplier_id)->first();
+
+        if($this_supplier->display == 1){
+            $suppliers = Supplier::where('display', 0)->orWhere('id', $item->supplier_id)->get();
+        }else{
+            $suppliers = Supplier::where('display', 0)->get();
+        }
+
         $logs = Log::where('product_id', $request->id)->orderBy('updated_at', 'desc')->paginate(10);
         return view('index.edit', compact('item', 'suppliers', 'logs'));
     }

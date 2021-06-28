@@ -47,6 +47,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
                 Route::get('delete/{id}', 'supplierController@delete')->name('supplier.delete');
                 Route::post('delete/{id}', 'supplierController@destroy');
+
+                Route::post('display/{id}', 'SupplierController@display')->name('supplier.display');
             });
         });
 

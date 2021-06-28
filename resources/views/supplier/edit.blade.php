@@ -72,6 +72,17 @@
                 </form>
 
                 <div class="text-right mt-10 lg:mt-0">
+                <form action="{{route('supplier.display', ['id' => request('id')])}}" method="post">
+                @csrf
+                    @if($supplier->display === 0)
+                    <input type="submit" value="この仕入先を非表示にする" class="cursor-pointer bg-white text-red-500 border-b border-red-500">
+                    <input type="hidden" name="display" value="1">
+                    @else
+                    <input type="submit" value="この仕入先を表示する" class="cursor-pointer bg-white text-red-500 border-b border-red-500">
+                    <input type="hidden" name="display" value="0">
+                    @endif
+                    </form>
+
                     <a href="{{route('supplier.delete', ['id' => request('id')])}}" class="text-red-500 border-b border-red-500">×　この仕入先を削除する</a>
                 </div>
 

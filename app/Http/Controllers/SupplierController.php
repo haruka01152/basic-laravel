@@ -56,7 +56,7 @@ class supplierController extends Controller
     {
         $products = Product::where('supplier_id', $id)->get();
         $supplier = Supplier::findOrFail($id);
-        $logs = Log::where('supplier_name', $supplier->name)->get();
+        $logs = Log::where('supplier', $supplier->id)->get();
 
         if(count($products) > 0 || count($logs) > 0){
             return view('supplier.notDelete');
@@ -69,5 +69,16 @@ class supplierController extends Controller
     {
         Supplier::where('id', $id)->delete();
         return view('supplier.destroy');
+    }
+
+    public function display(Request $request, $id)
+    {
+        if($request->display == 0){
+            Supplier::where('id', $id)->update(['display' => 0]);
+            return view('supplier.display');
+        }else{
+            Supplier::where('id', $id)->update(['display' => 1]);
+            return view('supplier.notDisplay');
+        }
     }
 }
