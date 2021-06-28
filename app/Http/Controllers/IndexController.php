@@ -8,6 +8,7 @@ use App\Models\supplier;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\IndexRequest;
+use Carbon\Carbon;
 
 class IndexController extends Controller
 {
@@ -64,6 +65,10 @@ class IndexController extends Controller
 
     public function edit(Request $request, $id)
     {
+        // ユーザーが編集画面を表示した時、半年以上前のログを削除
+        $month = Carbon::today()->subMonth(6);
+        $log = Log::whereDate('created_at', '<=', $month)->delete();
+
         $item = Product::findOrFail($id);
         $this_supplier = Supplier::where('id', $item->supplier_id)->first();
 
