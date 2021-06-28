@@ -64,7 +64,7 @@
 
                     <input type="submit" value="検索" class="py-2 px-3 md:ml-5 border border-gray-400 mt-3 ml-0 md:mt-0">
 
-                    <p class="text-red-600 pt-5 md:pl-10 md:pt-0">※商品が削除済みの場合、編集画面への遷移はできません。<br>※履歴は1年でローテートされます（1年以上前のものは削除されていきます）。</p>
+                    <p class="text-red-600 pt-5 md:pl-10 md:pt-0">※商品が削除済みの場合、編集画面への遷移はできません。<br>※履歴は6ヶ月でローテートされます（6ヶ月以上前のものは削除されていきます）。</p>
                 </form>
                 @if(count($logs) > 0)
                 <table class="logs m-auto my-10 block overflow-x-scroll whitespace-nowrap">

@@ -9,12 +9,17 @@ use App\Models\Product;
 use App\Models\User;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
     //
     public function log(Request $request)
     {
+        // ユーザーがログ画面を表示した時、半年以上前のログを削除
+        $month = Carbon::today()->subMonth(6);
+        $log = Log::whereDate('created_at', '<=', $month)->delete();
+
         $products = Product::pluck('id')->toArray();
         $users = User::all();
 
