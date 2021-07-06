@@ -12,6 +12,50 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// 使用しないルート
+Route::any('email/verification-notification', function(){
+    abort(404);
+});
+Route::any('email/verify', function(){
+    abort(404);
+});
+Route::any('email/verify/{id}/{hash}', function(){
+    abort(404);
+});
+Route::any('forgot-password', function(){
+    abort(404);
+});
+Route::any('reset-password', function(){
+    abort(404);
+});
+Route::any('reset-password/{token}', function(){
+    abort(404);
+});
+Route::any('two-factor-challenge', function(){
+    abort(404);
+});
+Route::any('user/confirm-password', function(){
+    abort(404);
+});
+Route::any('user/confirmed-password-status', function(){
+    abort(404);
+});
+Route::any('user/password', function(){
+    abort(404);
+});
+Route::any('user/profile-information', function(){
+    abort(404);
+});
+Route::any('user/two-factor-authentication', function(){
+    abort(404);
+});
+Route::any('user/two-factor-qr-code', function(){
+    abort(404);
+});
+Route::any('user/two-factor-recovery-codes', function(){
+    abort(404);
+});
+
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // 初回ログイン時パスワード変更を要求する
@@ -26,17 +70,18 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::prefix('index')->group(function () {
             Route::get('/', 'IndexController@index')->name('index');
 
-            Route::get('add', 'IndexController@add')->name('index.add');
-            Route::post('add', 'IndexController@create');
+            Route::middleware('admin-edit')->group(function(){
+                Route::get('add', 'IndexController@add')->name('index.add');
+                Route::post('add', 'IndexController@create');
+                Route::post('edit/{id}', 'IndexController@update');
+                Route::get('delete/{id}', 'IndexController@delete')->name('index.delete');
+                Route::post('delete/{id}', 'IndexController@destroy');    
+            });
 
             Route::get('edit/{id}', 'IndexController@edit')->name('index.edit');
-            Route::post('edit/{id}', 'IndexController@update');
-
-            Route::get('delete/{id}', 'IndexController@delete')->name('index.delete');
-            Route::post('delete/{id}', 'IndexController@destroy');
 
             // 仕入先編集処理
-            Route::prefix('supplier')->group(function(){
+            Route::group(['prefix' => 'supplier', 'middleware' => 'admin-edit'], function(){
                 Route::get('/', 'supplierController@index')->name('supplier.index');
                 
                 Route::get('add', 'supplierController@add')->name('supplier.add');
