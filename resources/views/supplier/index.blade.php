@@ -49,7 +49,7 @@
                 <div class="flex flex-col justify-around lg:flex-row items-start">
                     <a href="{{route('supplier.add')}}" class="cursor-pointer text-lg text-white bg-red-400 inline-block py-2 px-4 rounded-lg shadow-md mb-5 lg:mb-0">仕入先を追加</a>
 
-                    <p class="text-red-600">※仕入先は基本的に削除不可です。（当該仕入先の商品もしくは変更履歴が無い場合のみ可能）<br>
+                    <p class="text-red-600">※仕入先は基本的に削除不可です。（当該仕入先の商品・変更履歴が両方存在しない場合のみ可能）<br>
                     商品追加時の仕入先欄に表示させないようにするには、仕入先を非表示にしてください。</p>
                 </div>
 

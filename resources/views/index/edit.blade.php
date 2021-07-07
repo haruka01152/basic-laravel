@@ -181,7 +181,7 @@
             </div>
 
             <div class="mt-10 text-center">
-                @if(url()->current() == url()->previous())
+                @if(url()->current() == url()->previous() || strpos(url()->previous(), 'index/delete'))
                 <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{route('index')}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　在庫リストへ戻る</a>
                 @else
                 <a class="inline-block py-3 px-5 bg-white shadow-xl rounded-lg border border-solid border-gray-800" href="{{url()->previous()}}"><i class="fas fa-arrow-circle-left fa-lg text-gray-700"></i>　前ページへ戻る</a>
