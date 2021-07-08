@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatesuppliersTable extends Migration
+class AddDisplayColumnToSuppliersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreatesuppliersTable extends Migration
      */
     public function up()
     {
-        Schema::create('suppliers', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamp('updated_at')->useCurrent()->nullable();
-            $table->timestamp('created_at')->useCurrent()->nullable();
+        Schema::table('suppliers', function (Blueprint $table) {
+            //
+            $table->integer('display')->default(0);
         });
     }
 
@@ -28,6 +26,9 @@ class CreatesuppliersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('suppliers');
+        Schema::table('suppliers', function (Blueprint $table) {
+            //
+            $table->dropColumn('display');
+        });
     }
 }
