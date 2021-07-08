@@ -7,7 +7,7 @@ use App\Models\Supplier;
 use App\Models\Product;
 use App\Models\Log;
 
-class supplierController extends Controller
+class SupplierController extends Controller
 {
     //
     public function index()

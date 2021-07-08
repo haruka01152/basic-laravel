@@ -82,16 +82,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
             // 仕入先編集処理
             Route::group(['prefix' => 'supplier', 'middleware' => 'admin-edit'], function(){
-                Route::get('/', 'supplierController@index')->name('supplier.index');
+                Route::get('/', 'SupplierController@index')->name('supplier.index');
                 
-                Route::get('add', 'supplierController@add')->name('supplier.add');
-                Route::post('add', 'supplierController@create');
+                Route::get('add', 'SupplierController@add')->name('supplier.add');
+                Route::post('add', 'SupplierController@create');
 
-                Route::get('edit/{id}', 'supplierController@edit')->name('supplier.edit');
-                Route::post('edit/{id}', 'supplierController@update');
+                Route::get('edit/{id}', 'SupplierController@edit')->name('supplier.edit');
+                Route::post('edit/{id}', 'SupplierController@update');
 
-                Route::get('delete/{id}', 'supplierController@delete')->name('supplier.delete');
-                Route::post('delete/{id}', 'supplierController@destroy');
+                Route::get('delete/{id}', 'SupplierController@delete')->name('supplier.delete');
+                Route::post('delete/{id}', 'SupplierController@destroy');
 
                 Route::post('display/{id}', 'SupplierController@display')->name('supplier.display');
             });
