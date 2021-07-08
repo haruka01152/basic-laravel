@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Log;
-use App\Models\supplier;
+use App\Models\Supplier;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\IndexRequest;

@@ -31,7 +31,7 @@ class Log extends Model
 
     public function suppliers()
     {
-        return $this->belongsTo('App\Models\supplier', 'supplier', 'id');
+        return $this->belongsTo('App\Models\Supplier', 'supplier', 'id');
     }
 
     public function actions()
