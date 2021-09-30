@@ -60,21 +60,28 @@
                 </div>
 
                 <div class="lg:flex">
-                    <form class="mb-0 mt-8 lg:mt-0 flex lg:items-center flex-col md:flex-row w-full lg:w-auto">
+                    <form class="mb-0 mt-8 lg:mt-0 flex-column flex-wrap items-center flex-col md:flex-row w-full lg:w-auto">
 
                         @csrf
-                        <i class="fas fa-search fa-lg mr-2 mt-0 md:mt-4 lg:mt-0"></i>
-                        <input type="text" name="find" value="{{request('find')}}" placeholder="商品名を検索" class="mt-3 md:mt-0">
+                        
 
-                        <select name="supplier" class="mt-3 md:ml-5 md:mt-0">
-                            <option value="">選択してください</option>
+                        <div class="flex">
+                        <input type="text" name="find" value="{{request('find')}}" placeholder="商品名を検索（複数キーワード可）" class="mt-3 ml-7 md:mt-0 w-64">
+
+                        <select name="supplier" class="mt-3 md:ml-5 md:mt-0" id="#submit_select" onchange="submit(this.form)">
+                            <option value="">すべての仕入先</option>
                             @foreach($suppliers as $supplier)
                             <option value="{{$supplier->id}}" @if(request('supplier') == $supplier->id)selected @endif>{{$supplier->name}}</option>
                             @endforeach
                         </select>
 
                         <input type="submit" value="検索" class="py-2 px-3 md:ml-5 border border-gray-400 mt-3 ml-0 md:mt-0">
-                    </form>
+                        </div>
+                        <!-- <div class="mt-3 ml-7">
+                            <input type="checkbox" id="notInclude_zero" name="notInclude_zero" value="1" checked>
+                            <label for="notInclude_zero">数量0の物品を表示しない</label>
+                        </div> -->
+                                            </form>
 
                     <div class="mt-10 lg:mt-0 lg:ml-10">
                         <tr>
@@ -84,8 +91,6 @@
                         <a href="{{route('index')}}" class="ml-5 cursor-pointer text-sm border border-gray-500 inline-block py-1 px-2">条件リセット</a>
                     </div>
                 </div>
-
-
             </div>
 
 

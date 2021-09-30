@@ -62,7 +62,7 @@
                         <input type="text" name="email" value="{{request('email')}}" placeholder="メールアドレスを検索" class="mt-3 md:mt-0">
 
                         <select name="authority" class="mt-3 md:ml-5 md:mt-0">
-                            <option value="">選択してください</option>
+                            <option value="">すべての権限</option>
                             @foreach($authorities as $authority)
                             <option value="{{$authority->id}}" @if(request('authority') == $authority->id)selected @endif>{{$authority->name}}</option>
                             @endforeach

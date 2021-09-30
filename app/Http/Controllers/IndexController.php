@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\IndexRequest;
 use Carbon\Carbon;
 
+
 class IndexController extends Controller
 {
 
@@ -22,9 +23,21 @@ class IndexController extends Controller
                 $query->where('supplier_id', $supplier);
             }
 
-            if ($find = request('find')) {
-                $query->where('name', 'LIKE', "%{$find}%");
-            }
+            $find = request('find');
+            $query->where(function ($query) use ($find){
+                if(strpos($find, ' ') || strpos($find, '　')){
+                    $find = mb_convert_kana($find, 's');
+                    $find = preg_split('/[\s]+/', $find, -1, PREG_SPLIT_NO_EMPTY);
+                }
+
+                if(is_array($find)){
+                    foreach($find as $f){
+                        $query->where('name', 'LIKE', "%{$f}%");
+                    }
+                }else{
+                    $query->where('name', 'LIKE', "%{$find}%");
+                }
+            });
         })->sortable()->orderBy('supplier_id', 'asc')->paginate(15);
 
         // 何も入力せず検索したら最初のindexURLにリダイレクト
