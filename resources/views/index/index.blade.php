@@ -51,16 +51,12 @@
     <div class="py-12 px-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <div class="mb-10 bg-white py-10 px-5 overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="mb-10 bg-white pb-10 {{Auth::user()->authority == 1 || Auth::user()->authority == 2 ? 'pt-10' : ''}} px-5 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="flex flex-col justify-start lg:flex-row items-start lg:items-center mb-5 lg:mb-10 lg:ml-7">
-                    @if(Auth::user()->authority === 1 || Auth::user()->authority === 2)
+                    @if(Auth::user()->authority == 1 || Auth::user()->authority == 2)
                     <a href="{{route('index.add')}}" class="cursor-pointer text-lg text-white bg-red-400 inline-block py-2 px-4 rounded-lg shadow-md mb-5 lg:mb-0">商品を追加</a>
                     <a href="{{route('supplier.index')}}" class="text-lg text-white bg-red-400 inline-block py-2 px-4 rounded-lg shadow-md lg:ml-7">仕入先の追加・編集</a>
-                    @else
-                    <a class="cursor-not-allowed text-lg text-white bg-red-200 inline-block py-2 px-4 rounded-lg shadow-md mb-5 lg:mb-0">商品を追加</a>
-                    <a class="cursor-not-allowed text-lg text-white bg-red-200 inline-block py-2 px-4 rounded-lg shadow-md lg:ml-7">仕入先の追加・編集</a>
                     @endif
-
                 </div>
 
                 <div class="lg:flex">

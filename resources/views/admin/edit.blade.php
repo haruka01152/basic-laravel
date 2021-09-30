@@ -64,7 +64,7 @@
                             <label for="authority">権限設定</label>
                             <select name="authority" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-auto">
                             @foreach($authorities as $authority)
-                            <option value="{{$authority->id}}" @if($user->authority === $authority->id)selected @endif>{{$authority->name}}</option>
+                            <option value="{{$authority->id}}" @if($user->authority ==$authority->id)selected @endif>{{$authority->name}}</option>
                             @endforeach
                             </select>
                         </div>

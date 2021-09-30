@@ -46,7 +46,6 @@
             <div class="bg-white p-10 overflow-hidden shadow-xl sm:rounded-lg">
                 <h3 class="text-lg">Product Number :　{{$item->id}}</h3>
 
-                @if(Auth::user()->authority === 1 || Auth::user()->authority === 2)
                 <form action="" method="post" class="text-center">
                     @csrf
 
@@ -80,56 +79,13 @@
                         </div>
                     </div>
 
-
+                    @if(Auth::user()->authority ==1 || Auth::user()->authority ==2)
                     <input type="submit" value="更新" class="cursor-pointer text-lg text-white bg-red-400 inline-block w-2/4 lg:w-24 leading-10 h-10 rounded-lg shadow-md">
                 </form>
 
                 <div class="text-right mt-10 lg:mt-0">
                     <a href="{{route('index.delete', ['id' => $item->id])}}" class="text-red-500 border-b border-red-500">×　この商品を削除する</a>
                 </div>
-                @else
-
-                <div class="text-center">
-                    @csrf
-
-                    <div class="py-16 flex flex-col lg:flex-row justify-center">
-                        <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
-                            <label for="supplier">仕入先</label>
-                            <select name="supplier" class="w-full md:w-3/4 lg:w-auto lg:ml-2 lg:mr-7">
-                                @foreach($suppliers as $supplier)
-                                @if($supplier->name === $item->suppliers->name)
-                                <option value="{{$supplier->id}}" selected>{{$supplier->name}}</option>
-                                @else
-                                <option value="{{$supplier->id}}">{{$supplier->name}}</option>
-                                @endif
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
-                            <label for="product_name">商品名</label>
-                            <input type="text" name="product_name" value="{{$item->name}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-auto">
-                        </div>
-
-                        <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
-                            <label for="price">価格</label>
-                            <input type="number" name="price" value="{{$item->price}}" class="lg:ml-2 lg:mr-7 w-full md:w-3/4 lg:w-36">
-                        </div>
-
-                        <div class="flex flex-col py-3 lg:py-0 lg:flex-row items-center">
-                            <label for="quantity">数量</label>
-                            <input type="number" name="quantity" value="{{$item->quantity}}" class="lg:ml-2 w-full md:w-3/4 lg:w-24">
-                        </div>
-                    </div>
-
-
-                    <a class="cursor-not-allowed text-lg text-white bg-red-200 inline-block w-2/4 lg:w-24 h-10 leading-10 rounded-lg shadow-md">更新</a>
-                </div>
-
-                <div class="text-right mt-10 lg:mt-0">
-                    <a class="cursor-not-allowed text-red-200 border-b border-red-200">×　この商品を削除する</a>
-                </div>
-
                 @endif
 
 

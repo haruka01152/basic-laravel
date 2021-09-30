@@ -21,7 +21,7 @@ class HomeController extends Controller
         $log = Log::whereDate('created_at', '<=', $month)->delete();
 
         $products = Product::pluck('id')->toArray();
-        $users = User::all();
+        $users = User::where('authority', '!=', 3)->where('name', '!=', 'テスト')->get();
 
         $logs = Log::where(function ($query) {
             if ($user = request('user')) {

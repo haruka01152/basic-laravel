@@ -19,25 +19,9 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'name' => 'haruka',
-                'email' => 'haruka.0115maple@yahoo.ne.jp',
-                'password' => Hash::make('hamutarou115'),
+                'email' => 'yamamoto-har@kk-technica.co.jp',
+                'password' => Hash::make('Technica123'),
                 'authority' => 1,
-            ],
-            [
-                'name' => 'hoge1',
-                'email' => 'hoge1@hoge.com',
-                'password' => Hash::make('password'),
-                'authority' =>1,
-            ], [
-                'name' => 'hoge2',
-                'email' => 'hoge2@hoge.com',
-                'password' => Hash::make('password'),
-                'authority' => 2,
-            ], [
-                'name' => 'hoge3',
-                'email' => 'hoge3@hoge.com',
-                'password' => Hash::make('password'),
-                'authority' => 3,
             ],
         ]);
     }

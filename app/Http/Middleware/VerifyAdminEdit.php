@@ -20,7 +20,7 @@ class VerifyAdminEdit
     {
         $user = Auth::user();
 
-        if($user->authority === 3){
+        if($user->authority ==3){
             return response(view('admin-error'));
         }
         return $next($request);
