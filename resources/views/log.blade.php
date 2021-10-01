@@ -55,14 +55,12 @@
 
                 <form class="mb-0 mt-8 lg:mt-0 flex lg:items-center flex-col md:flex-row w-full lg:w-auto">
                     @csrf
-                    <select name="user" class="mt-3 md:mt-0">
+                    <select name="user" class="mt-3 md:mt-0" onchange="submit(this.form);">
                         <option value="">ユーザー別履歴を表示</option>
                         @foreach($users as $user)
                         <option value="{{$user->id}}" @if(request('user') == $user->id)selected @endif>{{$user->name}}</option>
                         @endforeach
                     </select>
-
-                    <input type="submit" value="検索" class="py-2 px-3 md:ml-5 border border-gray-400 mt-3 ml-0 md:mt-0">
 
                     <p class="text-red-600 pt-5 md:pl-10 md:pt-0">※商品が削除済みの場合、編集画面への遷移はできません。<br>※履歴は6ヶ月でローテートされます（6ヶ月以上前のものは削除されていきます）。</p>
                 </form>
