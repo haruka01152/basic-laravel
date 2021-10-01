@@ -61,14 +61,12 @@
 
                 <div class="lg:flex">
                     <form class="mb-0 mt-8 lg:mt-0 flex-column flex-wrap items-center flex-col md:flex-row w-full lg:w-auto">
-
                         @csrf
-                        
 
                         <div class="flex">
                         <input type="text" name="find" value="{{request('find')}}" placeholder="商品名を検索（複数キーワード可）" class="mt-3 ml-7 md:mt-0 w-64">
 
-                        <select name="supplier" class="mt-3 md:ml-5 md:mt-0" id="#submit_select" onchange="submit(this.form)">
+                        <select name="supplier" class="mt-3 md:mt-0" style="border-left:none;" onchange="submit(this.form)">
                             <option value="">すべての仕入先</option>
                             @foreach($suppliers as $supplier)
                             <option value="{{$supplier->id}}" @if(request('supplier') == $supplier->id)selected @endif>{{$supplier->name}}</option>
@@ -77,11 +75,11 @@
 
                         <input type="submit" value="検索" class="py-2 px-3 md:ml-5 border border-gray-400 mt-3 ml-0 md:mt-0">
                         </div>
-                        <!-- <div class="mt-3 ml-7">
-                            <input type="checkbox" id="notInclude_zero" name="notInclude_zero" value="1" checked>
-                            <label for="notInclude_zero">数量0の物品を表示しない</label>
-                        </div> -->
-                                            </form>
+                        <div class="mt-5 ml-7">
+                            <input type="checkbox" id="include_zero" name="include_zero" onchange="submit(this.form);" value="1" {{request('include_zero') == 1 ? 'checked' : ''}}>
+                            <label for="include_zero">数量0の物品を表示する</label>
+                        </div>
+                    </form>
 
                     <div class="mt-10 lg:mt-0 lg:ml-10">
                         <tr>

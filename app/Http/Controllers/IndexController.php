@@ -19,6 +19,12 @@ class IndexController extends Controller
         $suppliers = Supplier::all();
 
         $items = Product::where(function ($query) {
+            if($include_zero = request('include_zero')){
+                $query;
+            }else{
+                $query->where('quantity', '!=', 0);
+            }
+
             if ($supplier = request('supplier')) {
                 $query->where('supplier_id', $supplier);
             }
@@ -41,7 +47,7 @@ class IndexController extends Controller
         })->sortable()->orderBy('supplier_id', 'asc')->paginate(15);
 
         // 何も入力せず検索したら最初のindexURLにリダイレクト
-        if (isset($request['find']) && $request['find'] == '' && $request['supplier'] == '') {
+        if ((isset($request['find']) && $request['find'] == '') && ($request['supplier'] == '' && $request['include_zero'] == null)) {
             return redirect()->route('index');
         }
 
