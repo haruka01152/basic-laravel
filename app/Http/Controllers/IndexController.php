@@ -18,7 +18,7 @@ class IndexController extends Controller
     {
         $suppliers = Supplier::all();
 
-        $items = Product::where(function ($query) {
+        $nonpage_items = Product::where(function ($query) {
             if($include_zero = request('include_zero')){
                 $query;
             }else{
@@ -44,14 +44,17 @@ class IndexController extends Controller
                     $query->where('name', 'LIKE', "%{$find}%");
                 }
             });
-        })->sortable()->orderBy('supplier_id', 'asc')->paginate(15);
+        })->sortable()->orderBy('supplier_id', 'asc');
+
+        $all_items = $nonpage_items->count();
+        $items = $nonpage_items->paginate(15);
 
         // 何も入力せず検索したら最初のindexURLにリダイレクト
         if ((isset($request['find']) && $request['find'] == '') && ($request['supplier'] == '' && $request['include_zero'] == null)) {
             return redirect()->route('index');
         }
 
-        return view('index.index', compact('items', 'suppliers'));
+        return view('index.index', compact('items', 'suppliers', 'all_items'));
     }
 
     public function add()

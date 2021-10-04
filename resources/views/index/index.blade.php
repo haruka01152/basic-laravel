@@ -95,6 +95,12 @@
             <div class="bg-white py-10 px-5 overflow-hidden shadow-xl sm:rounded-lg">
 
                 @if(count($items) > 0)
+                <div class="pb-3 flex justify-end items-center">
+                    <p class="text-gray-400">{{$items->firstItem()}} - {{$items->lastItem()}}件を表示しています（{{$all_items}}件中）</p>
+                    <div class="-mt-1">
+                    {{$items->appends(request()->query())->links()}}
+                </div>
+                </div>
                 <table class="m-auto block overflow-x-scroll whitespace-nowrap w-full">
                     <tr>
                         <th>仕入先</th>
@@ -117,10 +123,6 @@
                     </tr>
                     @endforeach
                 </table>
-
-                <div class="mt-5 md:mt-0">
-                    {{$items->appends(request()->query())->links()}}
-                </div>
 
                 @else
 
