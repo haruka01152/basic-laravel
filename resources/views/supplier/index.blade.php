@@ -65,7 +65,7 @@
                         <td><a class="td-link" href="{{route('supplier.edit', ['id' => $supplier->id])}}">{{$supplier->name}}</a></td>
                         <td><a class="td-link" href="{{route('supplier.edit', ['id' => $supplier->id])}}">{{$supplier->products->count()}}</a></td>
                         <td><a class="td-link" href="{{route('supplier.edit', ['id' => $supplier->id])}}">
-                        @if($supplier->display === 0)
+                        @if($supplier->display == 0)
                         表示
                         @else
                         非表示

@@ -54,7 +54,7 @@
                             <label for="supplier">仕入先</label>
                             <select name="supplier" class="w-full md:w-3/4 lg:w-auto lg:ml-2 lg:mr-7">
                                 @foreach($suppliers as $supplier)
-                                @if($supplier->name === $item->suppliers->name)
+                                @if($supplier->name == $item->suppliers->name)
                                 <option value="{{$supplier->id}}" selected>{{$supplier->name}}</option>
                                 @else
                                 <option value="{{$supplier->id}}">{{$supplier->name}}</option>
