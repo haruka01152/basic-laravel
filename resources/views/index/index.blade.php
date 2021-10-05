@@ -113,8 +113,8 @@
                     </tr>
                     @foreach($items as $item)
                     <tr>
-                        <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">{{$item->suppliers->name}}</a></td>
-                        <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">{{$item->name}}</a></td>
+                        <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">{{Str::limit($item->suppliers->name, 30, '…')}}</a></td>
+                        <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">{{Str::limit($item->name, 50, '…')}}</a></td>
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">￥{{number_format($item->price)}}</a></td>
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">{{$item->quantity}}</a></td>
                         <td><a class="td-link" href="{{route('index.edit', ['id' => $item->id])}}">￥{{number_format($item->price * $item->quantity)}}</a></td>

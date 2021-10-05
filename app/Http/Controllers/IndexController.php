@@ -47,7 +47,7 @@ class IndexController extends Controller
         })->sortable()->orderBy('supplier_id', 'asc');
 
         $all_items = $nonpage_items->count();
-        $items = $nonpage_items->paginate(15);
+        $items = $nonpage_items->paginate(50);
 
         // 何も入力せず検索したら最初のindexURLにリダイレクト
         if ((isset($request['find']) && $request['find'] == '') && ($request['supplier'] == '' && $request['include_zero'] == null)) {
