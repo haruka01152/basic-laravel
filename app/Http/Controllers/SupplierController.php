@@ -23,7 +23,7 @@ class SupplierController extends Controller
 
     public function create(Request $request)
     {
-        $rules = ['name' => 'required|max:10|unique:suppliers,name'];
+        $rules = ['name' => 'required|max:20|unique:suppliers,name'];
         $this->validate($request, $rules);
 
         Supplier::create(['name' => $request->name]);
@@ -42,7 +42,7 @@ class SupplierController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'name' => 'required|max:10|unique:suppliers,name,' . $id,
+            'name' => 'required|max:20|unique:suppliers,name,' . $id,
         ];
         $this->validate($request, $rules);
 
