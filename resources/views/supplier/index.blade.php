@@ -74,11 +74,6 @@
                     </tr>
                     @endforeach
                 </table>
-
-                <div class="mt-5 md:mt-0">
-                    {{$suppliers->links()}}
-                </div>
-
                 @else
 
                 <div class="py-10 text-center">
