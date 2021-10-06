@@ -107,7 +107,14 @@
                 <h3 class="text-lg">商品変更履歴</h3>
 
                 @if(count($logs) > 0)
-                <table class="logs m-auto my-10 block overflow-x-scroll whitespace-nowrap">
+                <div class="pb-3 flex justify-end items-center">
+                    <p class="text-gray-400">{{$logs->firstItem()}} - {{$logs->lastItem()}}件を表示しています（{{$all_logs}}件中）</p>
+                    <div class="-mt-1">
+                        {{$logs->links()}}
+                    </div>
+                </div>
+
+                <table class="logs m-auto mb-10 block overflow-x-scroll whitespace-nowrap">
                     <tr>
                         <th>更新者</th>
                         <th>操作</th>
@@ -124,9 +131,6 @@
                     @endforeach
                 </table>
 
-                <div class="mt-5 md:mt-0">
-                    {{$logs->links()}}
-                </div>
                 @else
 
                 <div class="py-10 text-center">

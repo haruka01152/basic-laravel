@@ -65,7 +65,13 @@
                     <p class="text-red-600 pt-5 md:pl-10 md:pt-0">※商品が削除済みの場合、編集画面への遷移はできません。<br>※履歴は6ヶ月でローテートされます（6ヶ月以上前のものは削除されていきます）。</p>
                 </form>
                 @if(count($logs) > 0)
-                <table class="logs m-auto my-10 block overflow-x-scroll whitespace-nowrap">
+                <div class="pt-10 pb-3 flex justify-end items-center">
+                    <p class="text-gray-400">{{$logs->firstItem()}} - {{$logs->lastItem()}}件を表示しています（{{$all_logs}}件中）</p>
+                    <div class="-mt-1">
+                        {{$logs->links()}}
+                    </div>
+                </div>
+                <table class="logs m-auto mb-10 block overflow-x-scroll whitespace-nowrap">
                     <tr>
                         <th>商品ID</th>
                         <th>更新者</th>
@@ -95,9 +101,6 @@
                     @endif
                     @endforeach
                 </table>
-
-                {{$logs->links()}}
-
                 @else
 
                 <div class="py-10 text-center">

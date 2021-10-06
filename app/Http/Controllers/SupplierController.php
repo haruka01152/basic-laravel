@@ -35,8 +35,10 @@ class SupplierController extends Controller
     public function edit(Request $request, $id)
     {
         $supplier = Supplier::findOrFail($id);
-        $items = Product::where('supplier_id', $id)->paginate(10);
-        return view('supplier.edit', compact('supplier', 'items'));
+        $nonpage_items = Product::where('supplier_id', $id);
+        $all_items = $nonpage_items->count();
+        $items = $nonpage_items->paginate(10);
+        return view('supplier.edit', compact('supplier', 'items', 'all_items'));
     }
 
     public function update(Request $request, $id)

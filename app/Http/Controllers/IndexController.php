@@ -100,8 +100,10 @@ class IndexController extends Controller
             $suppliers = Supplier::where('display', 0)->get();
         }
 
-        $logs = Log::where('product_id', $request->id)->orderBy('updated_at', 'desc')->paginate(10);
-        return view('index.edit', compact('item', 'suppliers', 'logs'));
+        $nonpage_logs = Log::where('product_id', $request->id)->orderBy('updated_at', 'desc');
+        $all_logs = $nonpage_logs->count();
+        $logs = $nonpage_logs->paginate(10);
+        return view('index.edit', compact('item', 'suppliers', 'logs', 'all_logs'));
     }
 
     public function update(Request $request, $id)

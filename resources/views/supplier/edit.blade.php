@@ -96,7 +96,13 @@
                 <h3 class="text-lg">この仕入先の商品</h3>
 
                 @if(count($items) > 0)
-                <table class="logs m-auto my-10 block overflow-x-scroll whitespace-nowrap">
+                <div class="pb-3 flex justify-end items-center">
+                    <p class="text-gray-400">{{$items->firstItem()}} - {{$items->lastItem()}}件を表示しています（{{$all_items}}件中）</p>
+                    <div class="-mt-1">
+                        {{$items->links()}}
+                    </div>
+                </div>
+                <table class="logs m-auto mb-10 block overflow-x-scroll whitespace-nowrap">
                     <tr>
                     <th>ID</th>
                     <th>商品名</th>
@@ -118,10 +124,6 @@
                     </tr>
                     @endforeach
                 </table>
-
-                <div class="mt-5 md:mt-0">
-                    {{$items->links()}}
-                </div>
                 @else
 
                 <div class="py-10 text-center">
