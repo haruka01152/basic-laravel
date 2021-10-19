@@ -111,7 +111,7 @@ class IndexController extends Controller
         // バリデーション
         $rules = [
             'product_name' => 'required|max:30|unique:products,name,' . $id,
-            'price' => 'numeric|min:1|max:1000000|nullable',
+            'price' => 'numeric|min:0|max:1000000|nullable',
             'quantity' => 'required|numeric|min:0|max:200',
         ];
         $this->validate($request, $rules);
